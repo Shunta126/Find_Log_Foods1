@@ -5,6 +5,9 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :image
+  has_many :restaurants
+  has_many :likes
+  has_many :comments
 
   validates :name, presence: true
   validates :age, presence: true
