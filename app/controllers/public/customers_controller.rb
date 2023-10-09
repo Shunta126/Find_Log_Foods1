@@ -31,5 +31,5 @@ end
 
  private
    def customer_params
-     params.require(:customer).permit(:name, :body, :email, :age, :encrypted_password, :profile_image)
+     params.require(:customer).permit(:name, :body, :email, :age, :image)
    end
