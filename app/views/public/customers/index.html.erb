@@ -18,7 +18,11 @@
               <P>Age<br><%= customer.age %></P>
             </div>
             <div class="content text-center">
-              <P>name<br><%= customer.name %></P>
+              <P>name<br>
+               <%= link_to customer_path(customer.id) do%>
+                <%= customer.name %>
+               <% end %>
+              </P>
             </div>
             <div class="content text-center">
               <P>投稿数</P>
