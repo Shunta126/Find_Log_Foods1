@@ -12,6 +12,87 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <div class="logo ml-5">
+            <%= link_to root_path, class: "mx-0" do %>
+              <%= image_tag "Foods.png", alt: "LOGO", size: "80x80" %>
+            <% end %>
+          </div>
+             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+             </button>
+              <div class="collapse navbar-collapse justify-content-end mr-5" id="navbarNavAltMarkup">
+               <div class="navbar-nav">
+                 <% if admin_signed_in? %>
+                  <% if request.fullpath.include? "/admin" %>
+                    <li class="nav-item">
+                      <%= link_to "会員一覧", admin_root_path, class: "btn nav-link ml-2" %>
+                    </li>
+
+                    <li class="nav-item">
+                      <%= link_to "投稿一覧", admin_restaurants_path, class: "btn nav-link ml-2" %>
+                    </li>
+
+                    <li class="nav-item">
+                      <%= link_to "ジャンル一覧", admin_genres_path, class: "btn nav-link ml-2" %>
+                    </li>
+
+                    <li class="nav-item">
+                      <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn nav-link ml-2" %>
+                    </li>
+
+                 <% else %>
+                    <li class="nav-item">
+                      <%= link_to "ログイン", new_admin_session_path, class: "btn nav-link ml-2" %>
+                    </li>
+                  <% end %>
+                 <% elsif customer_signed_in? %>
+                    <li class="nav-item">
+                      <%= link_to "料理店一覧", restaurants_path, class: "btn nav-link ml-2" %>
+                    </li>
+
+                    <li class="nav-item">
+                      <%= link_to "会員一覧", customers_path, class: "btn nav-link ml-2" %>
+                    </li>
+
+                    <li class="nav-item">
+                      <%= link_to "マイページ", customer_path, class: "btn nav-link ml-2" %>
+                    </li>
+
+                    <li class="nav-item">
+                      <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn nav-link ml-2" %>
+                    </li>
+
+                  <% else %>
+                    <li class="nav-item">
+                      <%= link_to "About", about_path, class: "btn nav-link ml-2" %>
+                    </li>
+
+                    <li class="nav-item">
+                      <%= link_to "新規登録", new_customer_registration_path, class: "btn nav-link ml-2" %>
+                    </li>
+
+                    <li class="nav-item">
+                      <%= link_to "ログイン", new_customer_session_path, class: "btn nav-link ml-2" %>
+                    </li>
+                  <% end %>
+                </div>
+              </div>
+        </div>
+      </nav>
+    </header>
+    <div class="container-field mt-3">
+     <%= yield %>
+    </div>
+
+    <footer>
+      <div class="container-fluid navbar-light bg-light fixed-bottom">
+        <div class="row justify-content-center mt-3">
+          <h3>Find_Log_Foods</h3>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
