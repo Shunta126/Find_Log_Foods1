@@ -1,12 +1,49 @@
 <div class="row justify-content-center">
-  <h4><%= @customer.name %>さんのページ</h4>
+  <% if @customer.id == current_customer.id %>
+    <h4><strong>マイページ</strong></h4>
+   <% else %>
+   <h4><strong><%= @customer.name %>さんのページ</strong></h4>
+  <% end %>
 </div>
 
-  <div class="row justify-content-center">
-    <% if @customer.image.attached? %>
-      <%= image_tag customer.image, size: "200x200" %>
-    <% else %>
-      <%= image_tag 'no_image.jpg', size: "200x200" %>
-    <% end %>
+  <div class="row justify-content-center mt-3">
+    <div class="col-2 justify-content-center">
+      <% if @customer.image.attached? %>
+        <%= image_tag customer.image, size: "200x200" %>
+      <% else %>
+        <%= image_tag 'no_image.jpg', size: "200x200" %>
+      <% end %>
+    </div>
+
+    <div class="col-5 text-center">
+      <div class="content">
+        <h5><strong>Age<br><%= @customer.age %></strong></h5>
+      </div>
+
+      <div class="content">
+        <h5><strong>Name<br><%= @customer.name %></strong></h5>
+      </div>
+
+      <div class="content">
+        <h5><strong>自己紹介<br><%= @customer.body %></strong></h5>
+      </div>
+
+      <div class="content">
+        <% if @customer.id == current_customer.id %>
+         <h5><strong>Email<br><%= @customer.email %></strong></h5>
+        <% end %>
+      </div>
+    </div>
   </div>
 
+  <% if @customer.id == current_customer.id %>
+    <div class="row mt-3">
+      <div class="col-1 offset-7">
+       <%= link_to "編集する", edit_customer_path(@customer.id) %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="row justify-content-center mt-3">
+    <h4>投稿一覧を見る</h4>
+  </div>
