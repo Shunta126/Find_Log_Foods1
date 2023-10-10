@@ -22,9 +22,15 @@ class Public::CustomersController < ApplicationController
   end
 
   def confirm
+    @customer = current_customer
   end
 
   def withdrawal
+    @customer = Customer.find(current_customer.id)
+    @customer.update(is_deleted: true)
+    reset_session
+    flash[:notice] = "ご利用ありがとうございました"
+    redirect_to root_path
   end
 
 end
