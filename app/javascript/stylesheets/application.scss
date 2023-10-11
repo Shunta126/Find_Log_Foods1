@@ -1,1 +1,11 @@
 @use '~bootstrap/scss/bootstrap';
+
+.mb-6 {
+  margin-bottom: 4.5rem !important;
+}
+
+.box-shadow {
+  box-shadow: 8px 10px 9px 7px rgba(0,0,0,0.21);
+  -webkit-box-shadow: 8px 10px 9px 7px rgba(0,0,0,0.21);
+  -moz-box-shadow: 8px 10px 9px 7px rgba(0,0,0,0.21);
+}

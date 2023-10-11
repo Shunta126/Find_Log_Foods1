@@ -1,0 +1,117 @@
+<% if @range == "customer" %>
+  <div class="row justify-content-center">
+    <h3><strong>会員検索結果一覧</strong></h3>
+  </div>
+
+  <div class="row justify-content-center">
+  <div class="col-9">
+    <div class="row justify-content-center">
+      <% @customers.each do |customer| %>
+          <div class="col-3 mb-5">
+            <div class="p-3 box-shadow">
+              <%= link_to customer_path(customer.id) do%>
+                <div class="content text-center">
+                  <% if customer.image.attached? %>
+                    <%= image_tag customer.image, size: "150x150" %>
+                  <% else %>
+                    <%= image_tag 'no_image.jpg', size: "150x150" %>
+                  <% end %>
+                </div>
+              <% end %>
+              <div class="content text-center">
+                <P>Age<br><%= customer.age %><br>
+                name<br><%= link_to customer_path(customer.id) do%>
+                <%= customer.name %>
+                 <% end %>
+                </P>
+              </div>
+              <div class="content text-center">
+                <P>投稿数</P>
+              </div>
+            </div>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+  <% elsif @range == "店舗名" %>
+  <div class="row justify-content-center">
+    <h3><strong>店舗名検索一覧</strong></h3>
+  </div>
+
+  <div class="row justify-content-center">
+  <div class="col-9">
+    <div class="row">
+      <% @restaurants.each do |restaurant| %>
+          <div class="col-4 mb-5">
+            <div class="p-3 box-shadow">
+              <div class="content text-center">
+                <%= link_to restaurant_path(restaurant.id) do%>
+                  <% if restaurant.image.attached? %>
+                    <%= image_tag restaurant.image, size: "180x180" %>
+                  <% else %>
+                    <%= image_tag 'no_image.jpg', size: "180x180" %>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="content text-center">
+                <P>店舗名<br>
+                <%= link_to restaurant_path(restaurant.id) do%>
+                <%= restaurant.restaurant_name %>
+                <% end %><br>
+                料金<br>
+                <%= restaurant.price %>円<br>
+                所在地<br>
+                <%= restaurant.place %></p>
+              </div>
+              <div class="content text-center">
+                <P>いいね・コメント</P>
+              </div>
+            </div>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+  <% elsif @range == "所在地" %>
+  <div class="row justify-content-center">
+    <h3><strong>店舗所在地検索一覧</strong></h3>
+  </div>
+
+  <div class="row justify-content-center">
+  <div class="col-9">
+    <div class="row">
+      <% @restaurants.each do |restaurant| %>
+          <div class="col-4 mb-5">
+            <div class="p-3 box-shadow">
+              <div class="content text-center">
+                <%= link_to restaurant_path(restaurant.id) do%>
+                  <% if restaurant.image.attached? %>
+                    <%= image_tag restaurant.image, size: "180x180" %>
+                  <% else %>
+                    <%= image_tag 'no_image.jpg', size: "180x180" %>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="content text-center">
+                <P>店舗名<br>
+                <%= link_to restaurant_path(restaurant.id) do%>
+                <%= restaurant.restaurant_name %>
+                <% end %><br>
+                料金<br>
+                <%= restaurant.price %>円<br>
+                所在地<br>
+                <%= restaurant.place %></p>
+              </div>
+              <div class="content text-center">
+                <P>いいね・コメント</P>
+              </div>
+            </div>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% end %>

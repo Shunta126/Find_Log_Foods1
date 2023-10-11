@@ -1,4 +1,16 @@
 <div class="row justify-content-center">
+  <div class="search_form">
+  <%= form_with url: search_path, local: true, method: :get do |f| %>
+      <%= f.label :会員氏名 %>
+      <%= f.hidden_field :range, value: 'customer' %>
+      <%= f.text_field :word %>
+      <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["部分一致","partial_match"]]) %>
+      <%= f.submit "検索", class: "btn-sm btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row justify-content-center">
   <h3><strong>会員一覧</strong></h3>
 </div>
 
@@ -6,25 +18,27 @@
   <div class="col-9">
     <div class="row justify-content-center">
       <% @customers.each do |customer| %>
-          <div class="col-3 mx-auto my-auto">
-            <%= link_to customer_path(customer.id) do%>
+          <div class="col-3 mb-5">
+            <div class="p-3 box-shadow">
+              <%= link_to customer_path(customer.id) do%>
+                <div class="content text-center">
+                  <% if customer.image.attached? %>
+                    <%= image_tag customer.image, size: "150x150" %>
+                  <% else %>
+                    <%= image_tag 'no_image.jpg', size: "150x150" %>
+                  <% end %>
+                </div>
+              <% end %>
               <div class="content text-center">
-                <% if customer.image.attached? %>
-                  <%= image_tag customer.image, size: "150x150" %>
-                <% else %>
-                  <%= image_tag 'no_image.jpg', size: "150x150" %>
-                <% end %>
+                <P>Age<br><%= customer.age %><br>
+                name<br><%= link_to customer_path(customer.id) do%>
+                <%= customer.name %>
+                 <% end %>
+                </P>
               </div>
-            <% end %>
-            <div class="content text-center">
-              <P>Age<br><%= customer.age %><br>
-              name<br><%= link_to customer_path(customer.id) do%>
-              <%= customer.name %>
-               <% end %>
-              </P>
-            </div>
-            <div class="content text-center">
-              <P>投稿数</P>
+              <div class="content text-center">
+                <P>投稿数</P>
+              </div>
             </div>
           </div>
       <% end %>

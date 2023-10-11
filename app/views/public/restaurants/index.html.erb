@@ -1,4 +1,15 @@
 <div class="row justify-content-center">
+  <div class="search_form">
+  <%= form_with url: search_path, local: true, method: :get do |f| %>
+      <%= f.select :range, options_for_select([['店舗名'], ['所在地']]) %>
+      <%= f.text_field :word %>
+      <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["部分一致","partial_match"]]) %>
+      <%= f.submit "検索", class: "btn-sm btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row justify-content-center">
   <h3><strong>料理店一覧</strong></h3>
 </div>
 
@@ -6,32 +17,33 @@
   <div class="col-9">
     <div class="row">
       <% @restaurants.each do |restaurant| %>
-          <div class="col-4 mx-auto my-auto">
-            <div class="content text-center">
-              <%= link_to restaurant_path(restaurant.id) do%>
-                <% if restaurant.image.attached? %>
-                  <%= image_tag restaurant.image, size: "180x180" %>
-                <% else %>
-                  <%= image_tag 'no_image.jpg', size: "100x100" %>
+          <div class="col-4 mb-5">
+            <div class="p-3 box-shadow">
+              <div class="content text-center">
+                <%= link_to restaurant_path(restaurant.id) do%>
+                  <% if restaurant.image.attached? %>
+                    <%= image_tag restaurant.image, size: "180x180" %>
+                  <% else %>
+                    <%= image_tag 'no_image.jpg', size: "180x180" %>
+                  <% end %>
                 <% end %>
-              <% end %>
-            </div>
-            <div class="content text-center">
-              <P>店舗名<br>
-              <%= link_to restaurant_path(restaurant.id) do%>
-              <%= restaurant.restaurant_name %>
-              <% end %><br>
-              料金<br>
-              <%= restaurant.price %>円<br>
-              所在地<br>
-              <%= restaurant.place %></p>
-            </div>
-            <div class="content text-center">
-              <P>いいね・コメント</P>
+              </div>
+              <div class="content text-center">
+                <P>店舗名<br>
+                <%= link_to restaurant_path(restaurant.id) do%>
+                <%= restaurant.restaurant_name %>
+                <% end %><br>
+                料金<br>
+                <%= restaurant.price %>円<br>
+                所在地<br>
+                <%= restaurant.place %></p>
+              </div>
+              <div class="content text-center">
+                <P>いいね・コメント</P>
+              </div>
             </div>
           </div>
       <% end %>
-
     </div>
   </div>
 </div>

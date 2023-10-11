@@ -13,6 +13,7 @@ scope module: :public do
   patch 'customers/:id/information', to: 'customers#update', as: 'update_customer'
   get 'customers/:id/confirm', to: 'customers#confirm', as: 'confirm_customer'
   patch 'customers/:id/withdrawal', to: 'customers#withdrawal', as: 'withdrawal_customer'
+  get "search" => "searches#search"
   resources :restaurants do
     resources :comments, only: [:create, :destroy]
     resource :likes, only: [:create, :destroy]
