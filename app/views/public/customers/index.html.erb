@@ -7,20 +7,19 @@
     <div class="row justify-content-center">
       <% @customers.each do |customer| %>
           <div class="col-3 mx-auto my-auto">
+            <%= link_to customer_path(customer.id) do%>
+              <div class="content text-center">
+                <% if customer.image.attached? %>
+                  <%= image_tag customer.image, size: "150x150" %>
+                <% else %>
+                  <%= image_tag 'no_image.jpg', size: "150x150" %>
+                <% end %>
+              </div>
+            <% end %>
             <div class="content text-center">
-              <% if customer.image.attached? %>
-                <%= image_tag customer.image, size: "100x100" %>
-              <% else %>
-                <%= image_tag 'no_image.jpg', size: "100x100" %>
-              <% end %>
-            </div>
-            <div class="content text-center">
-              <P>Age<br><%= customer.age %></P>
-            </div>
-            <div class="content text-center">
-              <P>name<br>
-               <%= link_to customer_path(customer.id) do%>
-                <%= customer.name %>
+              <P>Age<br><%= customer.age %><br>
+              name<br><%= link_to customer_path(customer.id) do%>
+              <%= customer.name %>
                <% end %>
               </P>
             </div>
@@ -29,7 +28,6 @@
             </div>
           </div>
       <% end %>
-
     </div>
   </div>
 </div>

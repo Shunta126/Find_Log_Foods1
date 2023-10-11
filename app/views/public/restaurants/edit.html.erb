@@ -1,0 +1,44 @@
+<div class="row justify-content-center">
+  <h4><strong>投稿編集ページ</strong></h4>
+</div>
+
+ <%= form_with model: @restaurant, url:restaurant_path, local: true, method: :patch do |f| %>
+  <div class="row justify-content-center mt-3">
+    <div class="col-2 justify-content-center">
+      <h5><strong>料理画像</strong></h5>
+      <%= f.file_field :image, accept: "image/*" %>
+    </div>
+
+    <div class="col-5 text-center">
+      <div class="content">
+        <h5><strong>店舗名<br><%= f.text_field :restaurant_name %></strong></h5>
+      </div>
+
+      <div class="content">
+        <h5><strong>ジャンル<br><%= f.collection_select :genre_id, @genres, :id, :name %></strong></h5>
+      </div>
+
+      <div class="content">
+        <h5><strong>料理名<br><%= f.text_field :food_name %></strong></h5>
+      </div>
+
+      <div class="content">
+        <h5><strong>金額<br><%= f.text_field :price, size: "5" %>円</strong></h5>
+      </div>
+
+      <div class="content" cols="40" rows="8">
+        <h5><strong>感想・評価<br><%= f.text_area :body, size: "55×8" %></strong></h5>
+      </div>
+
+      <div class="content">
+         <h5><strong>所在地<br><%= f.text_field :place, size: "30" %></strong></h5>
+      </div>
+    </div>
+  </div>
+
+    <div class="row mt-3">
+      <div class="col-1 offset-7">
+       <%= f.submit '変更を保存', class: "btn btn-success" %>
+      </div>
+    </div>
+  <% end %>

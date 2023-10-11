@@ -1,0 +1,55 @@
+<div class="row justify-content-center">
+   <h4><strong>店舗詳細ページ</strong></h4>
+</div>
+
+  <div class="row justify-content-center mt-3">
+    <div class="col-2 justify-content-center">
+      <% if @restaurant.image.attached? %>
+        <%= image_tag @restaurant.image, size: "200x200" %>
+      <% else %>
+        <%= image_tag 'no_image.jpg', size: "200x200" %>
+      <% end %>
+    </div>
+
+    <div class="col-5 text-center">
+      <div class="content">
+        <h5><strong>店舗名<br><%= @restaurant.restaurant_name %></strong></h5>
+      </div>
+
+      <div class="content">
+        <h5><strong>ジャンル<br><%= @restaurant.genre.name %></strong></h5>
+      </div>
+
+      <div class="content">
+        <h5><strong>料理名<br><%= @restaurant.food_name %></strong></h5>
+      </div>
+
+      <div class="content">
+        <h5><strong>金額<br><%= @restaurant.price %></strong></h5>
+      </div>
+
+      <div class="content">
+        <h5><strong>感想・評価<br><%= @restaurant.body %></strong></h5>
+      </div>
+
+      <div class="content">
+        <h5><strong>所在地<br><%= @restaurant.place %></strong></h5>
+      </div>
+    </div>
+  </div>
+
+<% if @restaurant.customer_id == current_customer.id %>
+  <div class="row mt-3">
+    <div class="col-1 offset-7">
+       <%= link_to "編集する", edit_restaurant_path(@restaurant.id) %>
+    </div>
+  </div>
+<% end %>
+
+<% if @restaurant.customer_id == current_customer.id %>
+  <div class="row mt-3">
+    <div class="col-1 offset-7">
+       <%= link_to "削除する", restaurant_path(@restaurant.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+    </div>
+  </div>
+<% end %>
