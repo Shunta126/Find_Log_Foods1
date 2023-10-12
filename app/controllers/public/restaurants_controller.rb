@@ -1,7 +1,14 @@
 class Public::RestaurantsController < ApplicationController
 
   def index
-    @restaurants = Restaurant.all
+    @genres = Genre.all
+    if params[:genre_id]
+      @genre = Genre.find(params[:genre_id])
+      @restaurants = @genre.restaurants.all
+    else
+      @restaurants = Restaurant.all
+    end
+
   end
 
   def new
