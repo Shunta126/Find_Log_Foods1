@@ -37,15 +37,8 @@
       </div>
 
       <div class="content">
-        <% if @restaurant.liked_by?(current_customer) %>
-          <%= link_to restaurant_likes_path(@restaurant), method: :delete do %>
-           ♥<%= @restaurant.likes.count %>いいね
-          <% end %>
-        <% else %>
-          <%= link_to restaurant_likes_path(@restaurant), method: :post do %>
-           ♡<%= @restaurant.likes.count %>いいね
-          <% end %>
-        <% end %>
+        <P id="like_buttons_<%= @restaurant.id %>" >
+        <%= render "public/likes/like", restaurant: @restaurant %></p>
       </div>
 
     </div>

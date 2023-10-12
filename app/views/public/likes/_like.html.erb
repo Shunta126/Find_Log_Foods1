@@ -1,0 +1,9 @@
+  <% if restaurant.liked_by?(current_customer) %>
+    <%= link_to restaurant_likes_path(restaurant), method: :delete, remote: true, data: {"turbolinks" => false} do %>
+     ♥<%= restaurant.likes.count %>いいね
+    <% end %>
+  <% else %>
+    <%= link_to restaurant_likes_path(restaurant), method: :post, remote: true, data: {"turbolinks" => false} do %>
+     ♡<%= restaurant.likes.count %>いいね
+    <% end %>
+  <% end %>

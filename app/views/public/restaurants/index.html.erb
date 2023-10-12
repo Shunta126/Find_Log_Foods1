@@ -54,7 +54,8 @@
                 <%= restaurant.place %></p>
               </div>
               <div class="content text-center">
-                <P><%= restaurant.likes.count %>いいね ♥・コメント</P>
+                <P id="like_buttons_<%= restaurant.id %>" >
+                 <%= render "public/likes/like", restaurant: restaurant %></p>
               </div>
             </div>
           </div>
