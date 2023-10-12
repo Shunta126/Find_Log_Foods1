@@ -50,6 +50,10 @@
                   <% end %>
                  <% elsif customer_signed_in? %>
                     <li class="nav-item">
+                      <%= link_to "新規投稿", new_restaurant_path, class: "btn nav-link ml-2" %>
+                    </li>
+
+                    <li class="nav-item">
                       <%= link_to "料理店一覧", restaurants_path, class: "btn nav-link ml-2" %>
                     </li>
 
@@ -84,7 +88,6 @@
       </nav>
     </header>
     <div class="container-field mt-3">
-      <%= link_to "新規投稿", new_restaurant_path, class: "btn nav-link ml-2" %>
      <%= yield %>
     </div>
 
