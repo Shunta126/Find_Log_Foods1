@@ -18,6 +18,7 @@ scope module: :public do
     resources :comments, only: [:create, :destroy]
     resource :likes, only: [:create, :destroy]
   end
+  resources :likes, only: [:index]
 end
 
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {

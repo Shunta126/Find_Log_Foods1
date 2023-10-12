@@ -12,4 +12,9 @@ class Public::LikesController < ApplicationController
     like.destroy
   end
 
+  def index
+    likes = Like.where(customer_id: current_customer.id).pluck(:restaurant_id)
+    @like_restaurants = Restaurant.find(likes)
+  end
+
 end

@@ -55,3 +55,9 @@
   <div class="row justify-content-center mt-3">
     <h4>投稿一覧を見る</h4>
   </div>
+
+  <% if @customer.id == current_customer.id %>
+    <div class="row justify-content-center mt-3">
+      <%= link_to "いいね一覧ページ", likes_path(@customer.id) %>
+    </div>
+  <% end %>
