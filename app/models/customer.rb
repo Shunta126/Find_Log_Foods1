@@ -6,7 +6,7 @@ class Customer < ApplicationRecord
 
   has_one_attached :image
   has_many :restaurants
-  has_many :likes
+  has_many :likes, dependent: :destroy
   has_many :comments
 
   validates :name, presence: true

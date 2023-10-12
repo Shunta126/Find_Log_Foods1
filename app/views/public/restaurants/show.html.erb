@@ -35,6 +35,19 @@
       <div class="content">
         <h5><strong>所在地<br><%= @restaurant.place %></strong></h5>
       </div>
+
+      <div class="content">
+        <% if @restaurant.liked_by?(current_customer) %>
+          <%= link_to restaurant_likes_path(@restaurant), method: :delete do %>
+           ♥<%= @restaurant.likes.count %>いいね
+          <% end %>
+        <% else %>
+          <%= link_to restaurant_likes_path(@restaurant), method: :post do %>
+           ♡<%= @restaurant.likes.count %>いいね
+          <% end %>
+        <% end %>
+      </div>
+
     </div>
   </div>
 
