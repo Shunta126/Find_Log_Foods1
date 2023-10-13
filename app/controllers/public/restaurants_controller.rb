@@ -41,6 +41,7 @@ class Public::RestaurantsController < ApplicationController
   def update
     @restaurant = Restaurant.find(params[:id])
     if @restaurant.update(restaurant_params)
+      flash[:notice] = "変更しました！"
       redirect_to restaurant_path(@restaurant)
     else
       @genres = Genre.all
