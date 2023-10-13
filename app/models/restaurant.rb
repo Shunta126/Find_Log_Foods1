@@ -5,11 +5,11 @@ class Restaurant < ApplicationRecord
   belongs_to :customer
   belongs_to :genre
 
-  validates :restaurant_name, presence: true
-  validates :place, presence: true
-  validates :food_name, presence: true
+  validates :restaurant_name, presence: true, length: {maximum: 50 }
+  validates :place, presence: true, length: {maximum: 30 }
+  validates :food_name, presence: true, length: {maximum: 50 }
   validates :body, presence: true, length:{maximum:200}
-  validates :price, presence: true
+  validates :price, presence: true, length: {maximum: 50 }
 
   def self.looks(search, word, range)
     if range == "店舗名"

@@ -6,58 +6,47 @@
   <% end %>
 </div>
 
+<div class="row justify-content-center mt-2">
+    <h4 class="mr-5">投稿一覧を見る</h4>
+    <% if @customer.id == current_customer.id %>
+     <%= link_to "いいね一覧ページ", likes_path(@customer.id) %>
+     <% end %>
+  </div>
+
   <div class="row justify-content-center mt-3">
-    <div class="col-2 justify-content-center">
-      <% if @customer.image.attached? %>
-        <%= image_tag @customer.image, size: "200x200" %>
-      <% else %>
-        <%= image_tag 'no_image.jpg', size: "200x200" %>
-      <% end %>
-    </div>
+    <div class="col-6 text-center">
+      <div class="p-3 box-shadow">
+        <div class="content">
+          <% if @customer.image.attached? %>
+            <%= image_tag @customer.image, size: "200x200" %>
+          <% else %>
+            <%= image_tag 'no_image.jpg', size: "200x200" %>
+          <% end %>
+        </div>
 
-    <div class="col-5 text-center">
-      <div class="content">
-        <h5><strong>Age<br><%= @customer.age %></strong></h5>
-      </div>
+        <div class="content">
+          <h5><strong>Age</strong><%= @customer.age %>
+          <strong class="ml-3">Name</strong><%= @customer.name %></h5>
+        </div>
 
-      <div class="content">
-        <h5><strong>Name<br><%= @customer.name %></strong></h5>
-      </div>
+        <div class="content">
+          <h5><strong>自己紹介</strong><br><%= @customer.body %></h5>
+        </div>
 
-      <div class="content">
-        <h5><strong>自己紹介<br><%= @customer.body %></strong></h5>
-      </div>
-
-      <div class="content">
-        <% if @customer.id == current_customer.id %>
-         <h5><strong>Email<br><%= @customer.email %></strong></h5>
-        <% end %>
+        <div class="content">
+          <% if @customer.id == current_customer.id %>
+           <h5><strong>Email</strong><br><%= @customer.email %></h5>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
 
   <% if @customer.id == current_customer.id %>
     <div class="row mt-3">
-      <div class="col-1 offset-7">
+      <div class="col-2 offset-8">
        <%= link_to "編集する", edit_customer_path(@customer.id) %>
+       <p class="mt-2"><%= link_to "退会する", confirm_customer_path(@customer.id) %></p>
       </div>
-    </div>
-  <% end %>
-
-  <% if @customer.id == current_customer.id %>
-    <div class="row mt-3">
-      <div class="col-1 offset-7">
-       <%= link_to "退会する", confirm_customer_path(@customer.id) %>
-      </div>
-    </div>
-  <% end %>
-
-  <div class="row justify-content-center mt-3">
-    <h4>投稿一覧を見る</h4>
-  </div>
-
-  <% if @customer.id == current_customer.id %>
-    <div class="row justify-content-center mt-3">
-      <%= link_to "いいね一覧ページ", likes_path(@customer.id) %>
     </div>
   <% end %>

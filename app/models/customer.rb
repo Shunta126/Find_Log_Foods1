@@ -9,9 +9,9 @@ class Customer < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :comments
 
-  validates :name, presence: true
-  validates :age, presence: true
-  validates :body, length:{maximum:200}
+  validates :name, presence: true, length: {maximum: 20 }
+  validates :age, presence: true, length: {maximum: 105 }
+  validates :body, presence: true, length:{maximum:200}
   validates :email, presence: true, uniqueness: true
 
   def self.looks(search, word)
