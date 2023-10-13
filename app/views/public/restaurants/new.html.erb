@@ -1,44 +1,42 @@
 <div class="row justify-content-center">
-  <h4><strong>新規投稿</strong></h4>
+  <div class="content">
+   <h4><strong>新規投稿</strong></h4>
+  </div>
 </div>
 
- <%= form_with model: @restaurant, url:restaurants_path, local: true, method: :post do |f| %>
-  <div class="row justify-content-center mt-3">
-    <div class="col-2 justify-content-center">
-      <h5><strong>料理画像</strong></h5>
-      <%= f.file_field :image, accept: "image/*" %>
-    </div>
-
-    <div class="col-5 text-center">
-      <div class="content">
-        <h5><strong>店舗名<br><%= f.text_field :restaurant_name,  placeholder: "ラーメン横綱", size: "25" %></strong></h5>
-      </div>
-
-      <div class="content">
-        <h5><strong>ジャンル<br><%= f.collection_select :genre_id, @genres, :id, :name, include_blank: "--選択して下さい--" %></strong></h5>
-      </div>
-
-      <div class="content">
-        <h5><strong>料理名<br><%= f.text_field :food_name, placeholder: "ラーメン小結", size: "25" %></strong></h5>
-      </div>
-
-      <div class="content">
-        <h5><strong>金額<br><%= f.text_field :price, placeholder: "900", size: "5" %>円</strong></h5>
-      </div>
-
-      <div class="content" cols="40" rows="8">
-        <h5><strong>感想・評価<br><%= f.text_area :body, placeholder: "200字以内", size: "55×8" %></strong></h5>
-      </div>
-
-      <div class="content">
-         <h5><strong>所在地<br><%= f.text_field :place, placeholder: "東京都新宿区歌舞伎町1-12-3", size: "30" %></strong></h5>
-      </div>
-    </div>
+<div class="row justify-content-center">
+  <%= form_with model: @restaurant, url:restaurants_path, local: true, method: :post do |f| %>
+  <div class="content text-center">
+    <h5><strong>料理画像</strong></h5>
+    <%= f.file_field :image, accept: "image/*" %>
   </div>
 
-    <div class="row mt-3">
-      <div class="col-1 offset-7">
-       <%= f.submit '投稿する', class: "btn btn-success" %>
-      </div>
+    <div class="content text-center">
+      <h5><strong>店舗名<br><%= f.text_field :restaurant_name,  placeholder: "ラーメン横綱", size: "25" %></strong></h5>
+    </div>
+
+    <div class="content text-center">
+      <h5><strong>ジャンル<br><%= f.collection_select :genre_id, @genres, :id, :name, include_blank: "--選択して下さい--" %></strong></h5>
+    </div>
+
+    <div class="content text-center">
+      <h5><strong>料理名<br><%= f.text_field :food_name, placeholder: "ラーメン小結", size: "25" %></strong></h5>
+    </div>
+
+    <div class="content text-center">
+      <h5><strong>金額<br><%= f.text_field :price, placeholder: "900", size: "5" %>円</strong></h5>
+    </div>
+
+    <div class="content text-center" cols="40" rows="8">
+      <h5><strong>感想・評価<br><%= f.text_area :body, placeholder: "200字以内", size: "55×8" %></strong></h5>
+    </div>
+
+    <div class="content text-center">
+       <h5><strong>所在地<br><%= f.text_field :place, placeholder: "東京都新宿区歌舞伎町1-12-3", size: "30" %></strong></h5>
+    </div>
+
+    <div class="content text-center">
+     <%= f.submit '投稿する', class: "btn btn-success" %>
     </div>
   <% end %>
+</div>
