@@ -30,11 +30,23 @@
 </div>
 
 <div class="row justify-content-center">
+  <P><i class="fa-solid fa-user fa-sm" style="color: #26f734;"></i>=自分の投稿</p>
+  <p><i class="fa-solid fa-users ml-5"></i>=自分以外の投稿</p>
+</div>
+
+<div class="row justify-content-center">
   <div class="col-9">
     <div class="row">
       <% @restaurants.each do |restaurant| %>
           <div class="col-4 mb-5">
             <div class="p-3 box-shadow">
+
+              <% if restaurant.customer_id == current_customer.id %>
+               <i class="fa-solid fa-user fa-sm" style="color: #26f734;"></i>
+              <% else %>
+              <i class="fa-solid fa-users"></i>
+              <% end %>
+
               <div class="content text-center">
                 <%= link_to restaurant_path(restaurant.id) do%>
                   <% if restaurant.image.attached? %>
