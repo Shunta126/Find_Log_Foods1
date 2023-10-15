@@ -9,6 +9,11 @@
       <% @customers.each do |customer| %>
           <div class="col-3 mb-5">
             <div class="p-3 box-shadow">
+              <% if customer.is_deleted == false %>
+               <i class="fa-solid fa-circle" style="color: #50f708;"></i>
+              <% else %>
+               <i class="fa-solid fa-circle" style="color: #b4b1b4;"></i>
+              <% end %>
               <%= link_to customer_path(customer.id) do%>
                 <div class="content text-center">
                   <% if customer.image.attached? %>
@@ -46,6 +51,11 @@
       <% @restaurants.each do |restaurant| %>
           <div class="col-4 mb-5">
             <div class="p-3 box-shadow">
+              <% if restaurant.customer_id == current_customer.id %>
+               <i class="fa-solid fa-user fa-sm" style="color: #26f734;"></i>
+              <% else %>
+              <i class="fa-solid fa-users"></i>
+              <% end %>
               <div class="content text-center">
                 <%= link_to restaurant_path(restaurant.id) do%>
                   <% if restaurant.image.attached? %>
@@ -86,6 +96,11 @@
       <% @restaurants.each do |restaurant| %>
           <div class="col-4 mb-5">
             <div class="p-3 box-shadow">
+              <% if restaurant.customer_id == current_customer.id %>
+               <i class="fa-solid fa-user fa-sm" style="color: #26f734;"></i>
+              <% else %>
+              <i class="fa-solid fa-users"></i>
+              <% end %>
               <div class="content text-center">
                 <%= link_to restaurant_path(restaurant.id) do%>
                   <% if restaurant.image.attached? %>
