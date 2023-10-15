@@ -2,45 +2,52 @@
    <h4><strong>店舗詳細ページ</strong></h4>
 </div>
 
-  <div class="row justify-content-center mt-3 ">
-    <div class="col-2 justify-content-center">
-      <% if @restaurant.image.attached? %>
-        <%= image_tag @restaurant.image, size: "200x200" %>
-      <% else %>
-        <%= image_tag 'no_image.jpg', size: "200x200" %>
-      <% end %>
+  <div class="row justify-content-center mt-3">
+    <div class="col-5 justify-content-center text-center">
+      <div class="p-3 box-shadow">
+        <div class="content">
+          <% if @restaurant.image.attached? %>
+            <%= image_tag @restaurant.image, size: "200x200" %>
+          <% else %>
+            <%= image_tag 'no_image.jpg', size: "200x200" %>
+          <% end %>
+        </div>
+
+        <div class="content">
+          <h5><strong>店舗名</strong><br><%= @restaurant.restaurant_name %></h5>
+        </div>
+
+        <div class="content">
+          <h5><strong>ジャンル</strong><br><%= @restaurant.genre.name %></h5>
+        </div>
+
+        <div class="content">
+          <h5><strong>料理名<br></strong><%= @restaurant.food_name %></h5>
+        </div>
+
+        <div class="content">
+          <h5><strong>金額<br></strong><%= @restaurant.price.to_s(:delimited) %>円</h5>
+        </div>
+
+        <div class="content">
+          <h5><strong>感想・評価<br></strong><%= @restaurant.body %></h5>
+        </div>
+
+        <div class="content">
+          <h5><strong>所在地<br></strong><%= @restaurant.place %></h5>
+        </div>
+
+        <div class="content">
+          <P id="like_buttons_<%= @restaurant.id %>" >
+          <%= render "public/likes/like", restaurant: @restaurant %></p>
+        </div>
+      </div>
     </div>
 
-    <div class="col-5 text-center">
+    <div class="col-3 text-center">
       <div class="content">
-        <h5><strong>店舗名<br><%= @restaurant.restaurant_name %></strong></h5>
+        <h5><strong>コメント一覧</strong></h5>
       </div>
-
-      <div class="content">
-        <h5><strong>ジャンル<br><%= @restaurant.genre.name %></strong></h5>
-      </div>
-
-      <div class="content">
-        <h5><strong>料理名<br><%= @restaurant.food_name %></strong></h5>
-      </div>
-
-      <div class="content">
-        <h5><strong>金額<br><%= @restaurant.price %></strong></h5>
-      </div>
-
-      <div class="content">
-        <h5><strong>感想・評価<br><%= @restaurant.body %></strong></h5>
-      </div>
-
-      <div class="content">
-        <h5><strong>所在地<br><%= @restaurant.place %></strong></h5>
-      </div>
-
-      <div class="content">
-        <P id="like_buttons_<%= @restaurant.id %>" >
-        <%= render "public/likes/like", restaurant: @restaurant %></p>
-      </div>
-
     </div>
   </div>
 

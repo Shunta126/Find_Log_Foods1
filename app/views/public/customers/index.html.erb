@@ -15,11 +15,22 @@
 </div>
 
 <div class="row justify-content-center">
+  <P><i class="fa-solid fa-circle" style="color: #50f708;"></i>=会員</p>
+  <p><i class="fa-solid fa-circle ml-5" style="color: #b4b1b4;"></i>=退会済み</p>
+</div>
+
+<div class="row justify-content-center">
   <div class="col-9">
     <div class="row justify-content-center">
       <% @customers.each do |customer| %>
           <div class="col-3 mb-5">
             <div class="p-3 box-shadow">
+              <% if customer.is_deleted == false %>
+               <i class="fa-solid fa-circle" style="color: #50f708;"></i>
+              <% else %>
+               <i class="fa-solid fa-circle" style="color: #b4b1b4;"></i>
+              <% end %>
+
               <%= link_to customer_path(customer.id) do%>
                 <div class="content text-center">
                   <% if customer.image.attached? %>
@@ -30,14 +41,14 @@
                 </div>
               <% end %>
               <div class="content text-center">
-                <P>Age<br><%= customer.age %><br>
-                name<br><%= link_to customer_path(customer.id) do%>
+                <P><strong>Age</strong><br><%= customer.age %><br>
+                <strong>Name</strong><br><%= link_to customer_path(customer.id) do%>
                 <%= customer.name %>
                  <% end %>
                 </P>
               </div>
               <div class="content text-center">
-                <P>投稿数</P>
+                <P><strong>投稿数</strong></P>
               </div>
             </div>
           </div>
