@@ -58,3 +58,23 @@
   color         : #1a1aff;     /* 背景色     */
   background    : #ffffff;     /* 文字色     */
 }
+
+.button2 {
+  display       : inline-block;
+  border-radius : 20%;          /* 角丸       */
+  font-size     : 14pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 12px 12px;   /* 余白       */
+  background    : #00b300;     /* 背景色     */
+  color         : #ffffff;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  transition    : .3s;         /* なめらか変化 */
+  box-shadow    : 9px 9px 3px #666666;  /* 影の設定 */
+  border        : 2px solid #00b300;    /* 枠の指定 */
+}
+.button2:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  color         : #00b300;     /* 背景色     */
+  background    : #ffffff;     /* 文字色     */
+}
