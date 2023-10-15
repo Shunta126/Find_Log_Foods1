@@ -29,6 +29,6 @@ namespace :admin do
   root to: 'homes#top'
   resources :genres, only: [:index, :create, :edit, :update]
   resources :customers, only: [:show, :edit, :update]
-  resources :restaurants, only: [:index, :show, :edit, :destroy]
+  resources :restaurants, only: [:index, :show, :edit, :destroy, :update]
  end
 end

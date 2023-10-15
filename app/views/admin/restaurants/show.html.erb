@@ -1,0 +1,71 @@
+<div class="row justify-content-center">
+   <h4><strong>店舗詳細ページ</strong></h4>
+</div>
+
+  <div class="row justify-content-center mt-3">
+    <div class="col-5 justify-content-center text-center">
+      <div class="p-3 box-shadow">
+        <div class="content">
+          <% if @restaurant.image.attached? %>
+            <%= image_tag @restaurant.image, size: "200x200" %>
+          <% else %>
+            <%= image_tag 'no_image.jpg', size: "200x200" %>
+          <% end %>
+        </div>
+
+        <div class="content">
+          <h5><strong>店舗名</strong><br><%= @restaurant.restaurant_name %></h5>
+        </div>
+
+        <div class="content">
+          <h5><strong>ジャンル</strong><br><%= @restaurant.genre.name %></h5>
+        </div>
+
+        <div class="content">
+          <h5><strong>料理名<br></strong><%= @restaurant.food_name %></h5>
+        </div>
+
+        <div class="content">
+          <h5><strong>金額<br></strong><%= @restaurant.price.to_s(:delimited) %>円</h5>
+        </div>
+
+        <div class="content">
+          <h5><strong>感想・評価<br></strong><%= @restaurant.body %></h5>
+        </div>
+
+        <div class="content">
+          <h5><strong>所在地<br></strong><%= @restaurant.place %></h5>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div>
+        <h4 class="text text-center">コメント一覧</h4>
+      </div>
+
+      <div id="comment_index">
+         <% @restaurant.comments.each do |comment| %>
+          <div>
+            <%= link_to admin_customer_path(comment.customer_id) do%>
+             <%= comment.customer.name %>
+            <% end %>
+            :<%= comment.comment %>
+             <%= link_to "削除", restaurant_comment_path(comment.restaurant, comment), method: :delete, remote:true, data: {"turbolinks" => false} %>
+           </div>
+         <% end %>
+       </div>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-2 offset-4">
+       <%= link_to "編集する", edit_admin_restaurant_path(@restaurant.id) %>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-2 offset-4">
+       <%= link_to "削除する", admin_restaurant_path(@restaurant.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+    </div>
+  </div>
