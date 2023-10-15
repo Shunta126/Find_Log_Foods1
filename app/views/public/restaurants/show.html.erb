@@ -46,27 +46,18 @@
 
     <div class="col-4">
       <div class="content text-center">
-        <h5><strong>コメント一覧</strong>(<%= @restaurant.comments.count %>件)</h5>
+        <div id="comment_counter">
+          <%= render "public/comments/counter", restaurant: @restaurant %>
+        </div>
       </div>
 
       <div class="content text-center">
-        <%= form_with model: [@restaurant, @comment] do |f| %>
-          <%= f.text_area :comment, size: "45×2", placeholder: "コメントをここに" %>
-          <%= f.submit "送信する" %>
-        <% end %>
+        <%= render "public/comments/form", restaurant: @restaurant, comment: @comment %>
       </div>
 
-      <% @restaurant.comments.each do |comment| %>
-        <div>
-          <%= link_to customer_path(comment.customer_id) do%>
-           <%= comment.customer.name %>
-          <% end %>
-          <%= comment.created_at.strftime('%Y/%m/%d') %>:<%= comment.comment %>
-          <% if comment.customer == current_customer %>
-           <%= link_to "削除", restaurant_comment_path(comment.restaurant, comment), method: :delete %>
-          <% end %>
-        </div>
-      <% end %>
+      <div id="comment_index">
+         <%= render "public/comments/index", restaurant: @restaurant %>
+       </div>
 
     </div>
   </div>
