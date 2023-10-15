@@ -67,7 +67,9 @@
               </div>
               <div class="content text-center">
                 <P id="like_buttons_<%= restaurant.id %>" >
-                 <%= render "public/likes/like", restaurant: restaurant %></p>
+                 <%= render "public/likes/like", restaurant: restaurant %>
+                 :コメント<%= restaurant.comments.count %>件</p>
+                 </p>
               </div>
             </div>
           </div>
