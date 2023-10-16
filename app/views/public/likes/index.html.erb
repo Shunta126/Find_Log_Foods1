@@ -18,17 +18,22 @@
                 <% end %>
               </div>
               <div class="content text-center">
-                <P>店舗名<br>
+                <P><strong>店舗名</strong><br>
                 <%= link_to restaurant_path(restaurant.id) do%>
                 <%= restaurant.restaurant_name %>
                 <% end %><br>
-                料金   <%= restaurant.price %>円<br>
-                所在地<br>
+                <strong>料金</strong>   <%= restaurant.price.to_s(:delimited) %>円<br>
+                <strong>所在地</strong><br>
                 <%= restaurant.place %></p>
               </div>
-              <div class="content text-center">
-                <P id="like_buttons_<%= restaurant.id %>" >
-                 <%= render "public/likes/like", restaurant: restaurant %></p>
+              <div class="row justify-content-center">
+                <table>
+                  <th>
+                      <td id="like_buttons_<%= restaurant.id %>" >
+                     <%= render "public/likes/like", restaurant: restaurant %></td>
+                     <td>:コメント<%= restaurant.comments.count %>件</td>
+                   </th>
+                </table>
               </div>
             </div>
           </div>
