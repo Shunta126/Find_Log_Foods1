@@ -1,6 +1,6 @@
 <div class="row justify-content-end mr-5">
   <div class="search_form">
-  <%= form_with url: search_path, local: true, method: :get do |f| %>
+  <%= form_with url: admin_search_path, local: true, method: :get do |f| %>
       <%= f.label :会員氏名 %>
       <%= f.hidden_field :range, value: 'customer' %>
       <%= f.text_field :word, size: "13" %>

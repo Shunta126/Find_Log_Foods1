@@ -27,6 +27,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
 namespace :admin do
   root to: 'homes#top'
+  get "search" => "searches#search"
   resources :genres, only: [:index, :create, :edit, :update]
   resources :customers, only: [:show, :edit, :update]
   resources :restaurants, only: [:index, :show, :edit, :destroy, :update] do

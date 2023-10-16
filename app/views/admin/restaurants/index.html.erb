@@ -1,3 +1,14 @@
+<div class="row justify-content-end mr-5">
+  <div class="search_form">
+  <%= form_with url: admin_search_path, local: true, method: :get do |f| %>
+      <%= f.select :range, options_for_select([['店舗名'], ['所在地']]) %>
+      <%= f.text_field :word %>
+      <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["部分一致","partial_match"]]) %>
+      <%= f.submit "検索", class: "btn-sm btn-primary" %>
+    <% end %>
+  </div>
+ </div>
+
 <div class="row justify-content-center">
   <h3>投稿一覧</h3>
 </div>
