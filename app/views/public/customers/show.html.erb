@@ -44,8 +44,8 @@
   <% if @customer.id == current_customer.id %>
     <div class="row mt-3">
       <div class="col-2 offset-8">
-       <%= link_to "編集する", edit_customer_path(@customer.id) %>
-       <p class="mt-2"><%= link_to "退会する", confirm_customer_path(@customer.id) %></p>
+       <%= link_to "編集する", edit_customer_path(@customer.id), class: "button-edit" %>
+       <p class="mt-2"><%= link_to "退会する", confirm_customer_path(@customer.id), class: "button-delete" %></p>
       </div>
     </div>
   <% end %>

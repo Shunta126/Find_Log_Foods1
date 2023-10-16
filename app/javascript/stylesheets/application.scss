@@ -42,7 +42,7 @@
 .button1 {
   display       : inline-block;
   border-radius : 20%;          /* 角丸       */
-  font-size     : 10pt;        /* 文字サイズ */
+  font-size     : 12pt;        /* 文字サイズ */
   text-align    : center;      /* 文字位置   */
   cursor        : pointer;     /* カーソル   */
   padding       : 12px 12px;   /* 余白       */
@@ -59,23 +59,23 @@
   background    : #ffffff;     /* 文字色     */
 }
 
-.button2 {
+.button-edit {
   display       : inline-block;
-  border-radius : 20%;          /* 角丸       */
-  font-size     : 14pt;        /* 文字サイズ */
+  border-radius : 5%;          /* 角丸       */
+  font-size     : 12pt;        /* 文字サイズ */
   text-align    : center;      /* 文字位置   */
   cursor        : pointer;     /* カーソル   */
-  padding       : 12px 12px;   /* 余白       */
-  background    : #00b300;     /* 背景色     */
+  padding       : 7px 12px;   /* 余白       */
+  background    : rgba(0, 222, 0, 0.78);     /* 背景色     */
   color         : #ffffff;     /* 文字色     */
   line-height   : 1em;         /* 1行の高さ  */
   transition    : .3s;         /* なめらか変化 */
-  box-shadow    : 9px 9px 3px #666666;  /* 影の設定 */
-  border        : 2px solid #00b300;    /* 枠の指定 */
+  box-shadow    : 5px 5px 9px #666666;  /* 影の設定 */
+  border        : 2px solid rgba(0, 222, 0, 0.78);    /* 枠の指定 */
 }
-.button2:hover {
+.button-edit:hover {
   box-shadow    : none;        /* カーソル時の影消去 */
-  color         : #00b300;     /* 背景色     */
+  color         : rgba(0, 222, 0, 0.78);     /* 背景色     */
   background    : #ffffff;     /* 文字色     */
 }
 
@@ -109,9 +109,30 @@ section {
   color         : #ffffff;     /* 文字色     */
   line-height   : 1em;         /* 1行の高さ  */
   transition    : .3s;         /* なめらか変化 */
+  box-shadow    : 5px 5px 9px #666666;
   border        : 2px solid rgba(255, 0, 0, 0.78);    /* 枠の指定 */
 }
 .button-delete:hover {
   color         : rgba(255, 0, 0, 0.78);     /* 背景色     */
+  background    : #ffffff;     /* 文字色     */
+}
+
+.button-new {
+  display       : inline-block;
+  border-radius : 5%;          /* 角丸       */
+  font-size     : 12pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 7px 12px;   /* 余白       */
+  background    : rgba(255, 77, 77, 0.94);     /* 背景色     */
+  color         : #ffffff;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  transition    : .3s;         /* なめらか変化 */
+  box-shadow    : 5px 5px 9px #666666;  /* 影の設定 */
+  border        : 2px solid rgba(255, 77, 77, 0.94);    /* 枠の指定 */
+}
+.button-new:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  color         : rgba(255, 77, 77, 0.94);     /* 背景色     */
   background    : #ffffff;     /* 文字色     */
 }

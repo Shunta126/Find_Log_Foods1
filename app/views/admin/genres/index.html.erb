@@ -19,7 +19,7 @@
   <%= form_with model: @genre, url: admin_genres_path do |f| %>
     <div class="mr-5 d-inline-block">ジャンル名</div>
     <div class="mr-5 d-inline-block"><%= f.text_field :name, placeholder: "ジャンル名" %></div>
-    <%= f.submit "新規登録", class:"btn btn-success" %>
+    <%= f.submit "新規登録", class: "button-edit" %>
   <% end %>
  </div>
 </div>
@@ -39,7 +39,7 @@
             <td><%= genre.name %></td>
             <td class="text-center">
               <%= link_to edit_admin_genre_path(genre.id) do %>
-                <botan class="button2">編集する</botan>
+                <botan class="button-edit">編集する</botan>
               <% end %>
             </td>
           </tr>
