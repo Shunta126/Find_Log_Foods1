@@ -51,7 +51,7 @@
              <%= comment.customer.name %>
             <% end %>
             :<%= comment.comment %>
-             <%= link_to "削除", restaurant_comment_path(comment.restaurant, comment), method: :delete, remote:true, data: {"turbolinks" => false} %>
+             <%= link_to "削除", admin_restaurant_comment_path(comment.restaurant, comment), method: :delete, remote:true, data: {"turbolinks" => false} %>
            </div>
          <% end %>
        </div>
