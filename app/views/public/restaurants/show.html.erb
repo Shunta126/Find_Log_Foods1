@@ -56,19 +56,19 @@
       </div>
     </div>
 
-    <div class="col-4">
+    <div class="col-5">
       <div class="content text-center">
         <div id="comment_counter">
           <%= render "public/comments/counter", restaurant: @restaurant %>
         </div>
       </div>
 
-      <div class="content text-center">
-        <%= render "public/comments/form", restaurant: @restaurant, comment: @comment %>
+      <div id="comment_index">
+        <%= render "public/comments/index", restaurant: @restaurant %>
       </div>
 
-      <div id="comment_index">
-         <%= render "public/comments/index", restaurant: @restaurant %>
+      <div class="content text-center mt-3">
+         <%= render "public/comments/form", restaurant: @restaurant, comment: @comment %>
        </div>
 
     </div>

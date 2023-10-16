@@ -39,21 +39,33 @@
       </div>
     </div>
 
-    <div class="col-4">
+    <div class="col-5">
       <div>
         <h4 class="text text-center">コメント一覧</h4>
       </div>
 
       <div id="comment_index">
-         <% @restaurant.comments.each do |comment| %>
-          <div>
-            <%= link_to admin_customer_path(comment.customer_id) do%>
-             <%= comment.customer.name %>
-            <% end %>
-            :<%= comment.comment %>
-             <%= link_to "削除", admin_restaurant_comment_path(comment.restaurant, comment), method: :delete, remote:true, data: {"turbolinks" => false} %>
-           </div>
-         <% end %>
+        <section>
+          <% @restaurant.comments.each do |comment| %>
+            <table class="table">
+              <th>
+                <td style="width:25%">
+                  <%= link_to customer_path(comment.customer_id) do%>
+                  <%= comment.customer.name %>
+                  <% end %>
+                </td>
+
+                <td style="width:60%">
+                  <%= comment.comment %>
+                </td>
+
+                <td style="width:15%">
+                   <%= link_to "削除", admin_restaurant_comment_path(comment.restaurant, comment), method: :delete, remote:true, class: "button-delete", data: {"turbolinks" => false} %>
+                </td>
+              </th>
+             </table>
+           <% end %>
+          </section>
        </div>
     </div>
   </div>
