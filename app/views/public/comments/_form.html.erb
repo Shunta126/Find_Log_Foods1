@@ -1,4 +1,6 @@
 <%= form_with model: [restaurant, comment], local: :ture do |f| %>
   <%= f.text_area :comment, size: "45×2", placeholder: "コメントをここに" %>
-  <%= f.submit "送信する" %>
+  <div class="row justify-content-center">
+   <%= f.submit "送信する", class: "button-edit" %>
+  </div>
 <% end %>

@@ -42,6 +42,15 @@
         </div>
 
         <div class="content">
+          <h5>
+            <strong>投稿者<br></strong>
+            <%= link_to customer_path(@restaurant.customer.id) do%>
+             <%= @restaurant.customer.name %>
+            <% end %>
+          </h5>
+        </div>
+
+        <div class="content">
           <h5><strong>感想・評価<br></strong><%= @restaurant.body %></h5>
         </div>
 
