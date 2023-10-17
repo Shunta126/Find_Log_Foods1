@@ -8,6 +8,9 @@ class Public::CustomersController < ApplicationController
   def show
     @customer = Customer.find(params[:id])
     @restaurants = @customer.restaurants
+    @customer = Customer.find(params[:id])
+    @following_customers = @customer.following_customers
+    @follower_customers = @customer.follower_customers
   end
 
   def edit
@@ -38,6 +41,16 @@ class Public::CustomersController < ApplicationController
     reset_session
     flash[:notice] = "ご利用ありがとうございました"
     redirect_to root_path
+  end
+
+  def follows
+    customer = Customer.find(params[:id])
+    @customers = customer.following_customers
+  end
+
+  def followers
+    customer = Customer.find(params[:id])
+    @customers = customer.follower_customers
   end
 
 end

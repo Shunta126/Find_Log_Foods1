@@ -14,6 +14,9 @@ scope module: :public do
   get 'customers/:id/confirm', to: 'customers#confirm', as: 'confirm_customer'
   patch 'customers/:id/withdrawal', to: 'customers#withdrawal', as: 'withdrawal_customer'
   get "search" => "searches#search"
+  resources :customers do
+  resource :relationships, only: [:create, :destroy]
+  end
   resources :restaurants do
     resources :comments, only: [:create, :destroy]
     resource :likes, only: [:create, :destroy]
@@ -23,6 +26,12 @@ end
 
 devise_scope :customer do
     post 'customers/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
+
+  resources :customer do
+    get 'customers/:id/follows', to: 'public/customers#follows', as: 'follows_customer'
+    get 'customers/:id/followers', to: 'public/customers#followers', as: 'followers_customer'
+
   end
 
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {

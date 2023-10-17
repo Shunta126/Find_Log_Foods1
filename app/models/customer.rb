@@ -8,6 +8,11 @@ class Customer < ApplicationRecord
   has_many :restaurants
   has_many :likes, dependent: :destroy
   has_many :comments
+  has_many :followers, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :followeds, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  has_many :following_customers, through: :followers, source: :followed
+  has_many :follower_customers, through: :followeds, source: :follower
+
 
   validates :name, presence: true, length: {maximum: 20 }
   validates :age, presence: true, length: {maximum: 105 }
@@ -31,6 +36,18 @@ class Customer < ApplicationRecord
       customer.age = "20"
       customer.body = "変更は会員登録後に行えます！"
     end
+  end
+
+  def follow(customer_id)
+  followers.create(followed_id: customer_id)
+  end
+
+  def unfollow(customer_id)
+    followers.find_by(followed_id: customer_id).destroy
+  end
+
+  def following?(customer)
+    following_customers.include?(customer)
   end
 
 end
