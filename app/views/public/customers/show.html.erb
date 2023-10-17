@@ -53,8 +53,8 @@
         </div>
 
         <div class="content">
-          <h5><strong>Age</strong><%= @customer.age %>
-          <strong class="ml-3">Name</strong><%= @customer.name %></h5>
+          <h5><strong>年齢</strong><%= @customer.age %>
+          <strong class="ml-3">名前</strong><%= @customer.name %></h5>
         </div>
 
         <div class="content">
@@ -63,7 +63,7 @@
 
         <div class="content">
           <% if @customer.id == current_customer.id %>
-           <h5><strong>Email</strong><br><%= @customer.email %></h5>
+           <h5><strong>メールアドレス</strong><br><%= @customer.email %></h5>
           <% end %>
         </div>
       </div>
