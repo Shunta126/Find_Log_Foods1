@@ -29,7 +29,7 @@ class Customer < ApplicationRecord
       customer.password = SecureRandom.urlsafe_base64
       customer.name = "ゲストユーザー"
       customer.age = "20"
-      customer.body = "ゲスト"
+      customer.body = "変更は会員登録後に行えます！"
     end
   end
 

@@ -15,12 +15,17 @@ class Public::RestaurantsController < ApplicationController
   def new
     @restaurant = Restaurant.new
     @genres = Genre.all
+    @customers = Customer.all
   end
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
     @restaurant.customer_id = current_customer.id
-    if @restaurant.save
+    if @restaurant.customer.email == 'guest@example.com'
+      @genres = Genre.all
+      flash[:notice] = "会員登録後に投稿できます！"
+      render :new
+    elsif @restaurant.save
       flash[:notice] = "投稿しました！"
       redirect_to restaurants_path
     else
