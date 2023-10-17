@@ -81,6 +81,10 @@
                     <li class="nav-item">
                       <%= link_to "ログイン", new_customer_session_path, class: "button" %>
                     </li>
+
+                    <li class="nav-item">
+                      <%= link_to "ゲストログイン", customers_guest_sign_in_path, class: "button", method: :post %>
+                    </li>
                   <% end %>
                 </div>
               </div>
