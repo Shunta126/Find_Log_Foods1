@@ -1,23 +1,25 @@
-<div class="row justify-content-center">
+<div class="container-field mt-3 mb-6">
+  <div class="row justify-content-center">
     <h3>管理者ログイン</h3>
   </div>
 
-  　<div class="row justify-content-center">
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="field">
-          <%= f.label :メールアドレス %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-        </div>
+　<div class="row justify-content-center">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field">
+        <%= f.label :メールアドレス %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
 
-        <div class="field">
-          <%= f.label :パスワード %><br />
-          <%= f.password_field :password, autocomplete: "current-password" %>
-        </div>
+      <div class="field">
+        <%= f.label :パスワード %><br />
+        <%= f.password_field :password, autocomplete: "current-password" %>
+      </div>
 
-        <div class="actions mt-3">
-          <%= f.submit "ログイン", class: "button-new" %>
-        </div>
-      <% end %>
+      <div class="actions mt-3">
+        <%= f.submit "ログイン", class: "button-new" %>
+      </div>
+    <% end %>
 
-    　<%= render "admin/shared/links" %>
-    </div>
+  　<%= render "admin/shared/links" %>
+  </div>
+</div>

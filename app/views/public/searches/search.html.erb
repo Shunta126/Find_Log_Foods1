@@ -1,150 +1,152 @@
-<% if @range == "customer" %>
-  <div class="row justify-content-center">
-    <h3><strong>会員検索結果一覧</strong></h3>
-  </div>
-
-  <div class="row justify-content-center">
-  <div class="col-9">
+<div class="container-field mt-3 mb-6">
+  <% if @range == "customer" %>
     <div class="row justify-content-center">
-      <% @customers.each do |customer| %>
-          <div class="col-3 mb-5">
-            <div class="p-3 box-shadow">
-              <% if customer.is_deleted == false %>
-               <i class="fa-solid fa-circle" style="color: #50f708;"></i>
-              <% else %>
-               <i class="fa-solid fa-circle" style="color: #b4b1b4;"></i>
-              <% end %>
-              <%= link_to customer_path(customer.id) do%>
+      <h3><strong>会員検索結果一覧</strong></h3>
+    </div>
+
+    <div class="row justify-content-center">
+    <div class="col-9">
+      <div class="row justify-content-center">
+        <% @customers.each do |customer| %>
+            <div class="col-3 mb-5">
+              <div class="p-3 box-shadow">
+                <% if customer.is_deleted == false %>
+                 <i class="fa-solid fa-circle" style="color: #50f708;"></i>
+                <% else %>
+                 <i class="fa-solid fa-circle" style="color: #b4b1b4;"></i>
+                <% end %>
+                <%= link_to customer_path(customer.id) do%>
+                  <div class="content text-center">
+                    <% if customer.image.attached? %>
+                      <%= image_tag customer.image, size: "150x150" %>
+                    <% else %>
+                      <%= image_tag 'no_image.jpg', size: "150x150" %>
+                    <% end %>
+                  </div>
+                <% end %>
                 <div class="content text-center">
-                  <% if customer.image.attached? %>
-                    <%= image_tag customer.image, size: "150x150" %>
-                  <% else %>
-                    <%= image_tag 'no_image.jpg', size: "150x150" %>
+                  <P><strong>Age</strong><br><%= customer.age %><br>
+                  <strong>Name</strong><br><%= link_to customer_path(customer.id) do%>
+                  <%= customer.name %>
+                   <% end %>
+                  </P>
+                </div>
+                <div class="content text-center">
+                  <% if current_customer != customer %>
+                    <% if current_customer.following?(customer) %>
+                      <%= link_to "フォロー外す", customer_relationships_path(customer.id), method: :delete, class: "button-delete" %>
+                    <% else %>
+                      <%= link_to "フォローする", customer_relationships_path(customer.id), method: :post, class:"button-edit" %>
+                    <% end %>
                   <% end %>
                 </div>
-              <% end %>
-              <div class="content text-center">
-                <P><strong>Age</strong><br><%= customer.age %><br>
-                <strong>Name</strong><br><%= link_to customer_path(customer.id) do%>
-                <%= customer.name %>
-                 <% end %>
-                </P>
-              </div>
-              <div class="content text-center">
-                <% if current_customer != customer %>
-                  <% if current_customer.following?(customer) %>
-                    <%= link_to "フォロー外す", customer_relationships_path(customer.id), method: :delete, class: "button-delete" %>
-                  <% else %>
-                    <%= link_to "フォローする", customer_relationships_path(customer.id), method: :post, class:"button-edit" %>
-                  <% end %>
-                <% end %>
               </div>
             </div>
-          </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
 
-  <% elsif @range == "店舗名" %>
-  <div class="row justify-content-center">
-    <h3><strong>店舗名検索結果一覧</strong></h3>
-  </div>
+    <% elsif @range == "店舗名" %>
+    <div class="row justify-content-center">
+      <h3><strong>店舗名検索結果一覧</strong></h3>
+    </div>
 
-  <div class="row justify-content-center">
-  <div class="col-9">
-    <div class="row">
-      <% @restaurants.each do |restaurant| %>
-          <div class="col-4 mb-5">
-            <div class="p-3 box-shadow">
-              <% if restaurant.customer_id == current_customer.id %>
-               <i class="fa-solid fa-user fa-sm" style="color: #26f734;"></i>
-              <% else %>
-              <i class="fa-solid fa-users"></i>
-              <% end %>
-              <div class="content text-center">
-                <%= link_to restaurant_path(restaurant.id) do%>
-                  <% if restaurant.image.attached? %>
-                    <%= image_tag restaurant.image, size: "180x180" %>
-                  <% else %>
-                    <%= image_tag 'no_image.jpg', size: "180x180" %>
-                  <% end %>
+    <div class="row justify-content-center">
+    <div class="col-9">
+      <div class="row">
+        <% @restaurants.each do |restaurant| %>
+            <div class="col-4 mb-5">
+              <div class="p-3 box-shadow">
+                <% if restaurant.customer_id == current_customer.id %>
+                 <i class="fa-solid fa-user fa-sm" style="color: #26f734;"></i>
+                <% else %>
+                <i class="fa-solid fa-users"></i>
                 <% end %>
-              </div>
-              <div class="content text-center">
-                <P><strong>店舗名</strong><br>
-                <%= link_to restaurant_path(restaurant.id) do%>
-                <%= restaurant.restaurant_name %>
-                <% end %><br>
-                <strong>料金</strong><br>
-                <%= restaurant.price.to_s(:delimited) %>円<br>
-                <strong>所在地</strong><br>
-                <%= restaurant.place %></p>
-              </div>
-              <div class="row justify-content-center">
-                <table>
-                  <th>
-                      <td id="like_buttons_<%= restaurant.id %>" >
-                     <%= render "public/likes/like", restaurant: restaurant %></td>
-                     <td>:コメント<%= restaurant.comments.count %>件</td>
-                   </th>
-                </table>
+                <div class="content text-center">
+                  <%= link_to restaurant_path(restaurant.id) do%>
+                    <% if restaurant.image.attached? %>
+                      <%= image_tag restaurant.image, size: "180x180" %>
+                    <% else %>
+                      <%= image_tag 'no_image.jpg', size: "180x180" %>
+                    <% end %>
+                  <% end %>
+                </div>
+                <div class="content text-center">
+                  <P><strong>店舗名</strong><br>
+                  <%= link_to restaurant_path(restaurant.id) do%>
+                  <%= restaurant.restaurant_name %>
+                  <% end %><br>
+                  <strong>料金</strong><br>
+                  <%= restaurant.price.to_s(:delimited) %>円<br>
+                  <strong>所在地</strong><br>
+                  <%= restaurant.place %></p>
+                </div>
+                <div class="row justify-content-center">
+                  <table>
+                    <th>
+                        <td id="like_buttons_<%= restaurant.id %>" >
+                       <%= render "public/likes/like", restaurant: restaurant %></td>
+                       <td>:コメント<%= restaurant.comments.count %>件</td>
+                     </th>
+                  </table>
+                </div>
               </div>
             </div>
-          </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
 
-  <% elsif @range == "所在地" %>
-  <div class="row justify-content-center">
-    <h3><strong>店舗所在地検索結果一覧</strong></h3>
-  </div>
+    <% elsif @range == "所在地" %>
+    <div class="row justify-content-center">
+      <h3><strong>店舗所在地検索結果一覧</strong></h3>
+    </div>
 
-  <div class="row justify-content-center">
-  <div class="col-9">
-    <div class="row">
-      <% @restaurants.each do |restaurant| %>
-          <div class="col-4 mb-5">
-            <div class="p-3 box-shadow">
-              <% if restaurant.customer_id == current_customer.id %>
-               <i class="fa-solid fa-user fa-sm" style="color: #26f734;"></i>
-              <% else %>
-              <i class="fa-solid fa-users"></i>
-              <% end %>
-              <div class="content text-center">
-                <%= link_to restaurant_path(restaurant.id) do%>
-                  <% if restaurant.image.attached? %>
-                    <%= image_tag restaurant.image, size: "180x180" %>
-                  <% else %>
-                    <%= image_tag 'no_image.jpg', size: "180x180" %>
-                  <% end %>
+    <div class="row justify-content-center">
+    <div class="col-9">
+      <div class="row">
+        <% @restaurants.each do |restaurant| %>
+            <div class="col-4 mb-5">
+              <div class="p-3 box-shadow">
+                <% if restaurant.customer_id == current_customer.id %>
+                 <i class="fa-solid fa-user fa-sm" style="color: #26f734;"></i>
+                <% else %>
+                <i class="fa-solid fa-users"></i>
                 <% end %>
-              </div>
-              <div class="content text-center">
-                <P><strong>店舗名</strong><br>
-                <%= link_to restaurant_path(restaurant.id) do%>
-                <%= restaurant.restaurant_name %>
-                <% end %><br>
-                <strong>料金</strong><br>
-                <%= restaurant.price.to_s(:delimited) %>円<br>
-                <strong>所在地</strong><br>
-                <%= restaurant.place %></p>
-              </div>
-              <div class="row justify-content-center">
-                <table>
-                  <th>
-                      <td id="like_buttons_<%= restaurant.id %>" >
-                     <%= render "public/likes/like", restaurant: restaurant %></td>
-                     <td>:コメント<%= restaurant.comments.count %>件</td>
-                   </th>
-                </table>
+                <div class="content text-center">
+                  <%= link_to restaurant_path(restaurant.id) do%>
+                    <% if restaurant.image.attached? %>
+                      <%= image_tag restaurant.image, size: "180x180" %>
+                    <% else %>
+                      <%= image_tag 'no_image.jpg', size: "180x180" %>
+                    <% end %>
+                  <% end %>
+                </div>
+                <div class="content text-center">
+                  <P><strong>店舗名</strong><br>
+                  <%= link_to restaurant_path(restaurant.id) do%>
+                  <%= restaurant.restaurant_name %>
+                  <% end %><br>
+                  <strong>料金</strong><br>
+                  <%= restaurant.price.to_s(:delimited) %>円<br>
+                  <strong>所在地</strong><br>
+                  <%= restaurant.place %></p>
+                </div>
+                <div class="row justify-content-center">
+                  <table>
+                    <th>
+                        <td id="like_buttons_<%= restaurant.id %>" >
+                       <%= render "public/likes/like", restaurant: restaurant %></td>
+                       <td>:コメント<%= restaurant.comments.count %>件</td>
+                     </th>
+                  </table>
+                </div>
               </div>
             </div>
-          </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
+  <% end %>
 </div>
-<% end %>

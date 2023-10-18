@@ -1,45 +1,47 @@
-<div class="row justify-content-end mr-5">
-  <div class="search_form">
-  <%= form_with url: admin_search_path, local: true, method: :get do |f| %>
-      <%= f.select :range, options_for_select([['店舗名'], ['所在地']]) %>
-      <%= f.text_field :word %>
-      <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["部分一致","partial_match"]]) %>
-      <%= f.submit "検索", class: "button1" %>
-    <% end %>
+<div class="container-field mt-3 mb-6">
+  <div class="row justify-content-end mr-5">
+    <div class="search_form">
+    <%= form_with url: admin_search_path, local: true, method: :get do |f| %>
+        <%= f.select :range, options_for_select([['店舗名'], ['所在地']]) %>
+        <%= f.text_field :word %>
+        <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["部分一致","partial_match"]]) %>
+        <%= f.submit "検索", class: "button1" %>
+      <% end %>
+    </div>
+   </div>
+
+  <div class="row justify-content-center">
+    <h3>投稿一覧</h3>
   </div>
- </div>
 
-<div class="row justify-content-center">
-  <h3>投稿一覧</h3>
-</div>
-
-<div class="row justify-content-center mt-3">
-  <div class="col-9">
-    <div class="row">
-      <% @restaurants.each do |restaurant| %>
-          <div class="col-4 mb-5">
-            <div class="p-3 box-shadow">
-              <div class="content text-center">
-                <%= link_to admin_restaurant_path(restaurant.id) do%>
-                  <% if restaurant.image.attached? %>
-                    <%= image_tag restaurant.image, size: "180x180" %>
-                  <% else %>
-                    <%= image_tag 'no_image.jpg', size: "180x180" %>
+  <div class="row justify-content-center mt-3">
+    <div class="col-9">
+      <div class="row">
+        <% @restaurants.each do |restaurant| %>
+            <div class="col-4 mb-5">
+              <div class="p-3 box-shadow">
+                <div class="content text-center">
+                  <%= link_to admin_restaurant_path(restaurant.id) do%>
+                    <% if restaurant.image.attached? %>
+                      <%= image_tag restaurant.image, size: "180x180" %>
+                    <% else %>
+                      <%= image_tag 'no_image.jpg', size: "180x180" %>
+                    <% end %>
                   <% end %>
-                <% end %>
-              </div>
-              <div class="content text-center">
-                <P><strong>店舗名</strong><br>
-                <%= link_to admin_restaurant_path(restaurant.id) do%>
-                <%= restaurant.restaurant_name %>
-                <% end %><br>
-                <strong>料金</strong>   <%= restaurant.price.to_s(:delimited) %>円<br>
-                <strong>所在地</strong><br>
-                <%= restaurant.place %></p>
+                </div>
+                <div class="content text-center">
+                  <P><strong>店舗名</strong><br>
+                  <%= link_to admin_restaurant_path(restaurant.id) do%>
+                  <%= restaurant.restaurant_name %>
+                  <% end %><br>
+                  <strong>料金</strong>   <%= restaurant.price.to_s(:delimited) %>円<br>
+                  <strong>所在地</strong><br>
+                  <%= restaurant.place %></p>
+                </div>
               </div>
             </div>
-          </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

@@ -1,43 +1,45 @@
-<div class="row justify-content-center">
-  <h3>いいね一覧ページ</h3>
-</div>
+<div class="container-field mt-3 mb-6">
+  <div class="row justify-content-center">
+    <h3>いいね一覧ページ</h3>
+  </div>
 
-<div class="row justify-content-center">
-  <div class="col-9">
-    <div class="row">
-      <% @like_restaurants.each do |restaurant| %>
-          <div class="col-4 mb-5">
-            <div class="p-3 box-shadow">
-              <div class="content text-center">
-                <%= link_to restaurant_path(restaurant.id) do%>
-                  <% if restaurant.image.attached? %>
-                    <%= image_tag restaurant.image, size: "180x180" %>
-                  <% else %>
-                    <%= image_tag 'no_image.jpg', size: "180x180" %>
+  <div class="row justify-content-center">
+    <div class="col-9">
+      <div class="row">
+        <% @like_restaurants.each do |restaurant| %>
+            <div class="col-4 mb-5">
+              <div class="p-3 box-shadow">
+                <div class="content text-center">
+                  <%= link_to restaurant_path(restaurant.id) do%>
+                    <% if restaurant.image.attached? %>
+                      <%= image_tag restaurant.image, size: "180x180" %>
+                    <% else %>
+                      <%= image_tag 'no_image.jpg', size: "180x180" %>
+                    <% end %>
                   <% end %>
-                <% end %>
-              </div>
-              <div class="content text-center">
-                <P><strong>店舗名</strong><br>
-                <%= link_to restaurant_path(restaurant.id) do%>
-                <%= restaurant.restaurant_name %>
-                <% end %><br>
-                <strong>料金</strong>   <%= restaurant.price.to_s(:delimited) %>円<br>
-                <strong>所在地</strong><br>
-                <%= restaurant.place %></p>
-              </div>
-              <div class="row justify-content-center">
-                <table>
-                  <th>
-                      <td id="like_buttons_<%= restaurant.id %>" >
-                     <%= render "public/likes/like", restaurant: restaurant %></td>
-                     <td>:コメント<%= restaurant.comments.count %>件</td>
-                   </th>
-                </table>
+                </div>
+                <div class="content text-center">
+                  <P><strong>店舗名</strong><br>
+                  <%= link_to restaurant_path(restaurant.id) do%>
+                  <%= restaurant.restaurant_name %>
+                  <% end %><br>
+                  <strong>料金</strong>   <%= restaurant.price.to_s(:delimited) %>円<br>
+                  <strong>所在地</strong><br>
+                  <%= restaurant.place %></p>
+                </div>
+                <div class="row justify-content-center">
+                  <table>
+                    <th>
+                        <td id="like_buttons_<%= restaurant.id %>" >
+                       <%= render "public/likes/like", restaurant: restaurant %></td>
+                       <td>:コメント<%= restaurant.comments.count %>件</td>
+                     </th>
+                  </table>
+                </div>
               </div>
             </div>
-          </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
-  </div>
+ </div>
 </div>

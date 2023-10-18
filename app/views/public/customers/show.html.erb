@@ -1,118 +1,124 @@
-<div class="row justify-content-center">
-  <% if @customer.id == current_customer.id %>
-    <h4><strong>マイページ</strong></h4>
-   <% else %>
-   <h4><strong><%= @customer.name %>さんのページ</strong></h4>
-  <% end %>
+<div class="flash mt-2 text-center">
+  <%= flash[:notice] %>
 </div>
 
-<div class="row justify-content-center mt-2">
-  <table>
-    <tr>
-      <th><h5>フォロー中</h5></th>
-      <td><h5>
-        <%= link_to customer_follows_customer_path(@customer) do %>
-         <%= @customer.followers.count %>
-        <% end %>
-        </h5></td>
-      <th><h5>フォロワー</h5></th>
-      <td><h5>
-        <%= link_to customer_followers_customer_path(@customer) do %>
-         <%= @customer.followeds.count %>
-        <% end %>
-        </h5></td>
-    </tr>
-  </table>
-</div>
-
-<div class="row justify-content-center mt-2">
- <% if current_customer != @customer %>
-    <% if current_customer.following?(@customer) %>
-      <%= link_to "フォロー外す", customer_relationships_path(@customer.id), method: :delete, class: "button-delete" %>
-    <% else %>
-      <%= link_to "フォローする", customer_relationships_path(@customer.id), method: :post, class:"button-edit" %>
+<div class="container-field mt-3 mb-6">
+  <div class="row justify-content-center">
+    <% if @customer.id == current_customer.id %>
+      <h4><strong>マイページ</strong></h4>
+     <% else %>
+     <h4><strong><%= @customer.name %>さんのページ</strong></h4>
     <% end %>
-  <% end %>
-</div>
-
-<div class="row justify-content-center mt-2">
-  <% if @customer.id == current_customer.id %>
-    <%= link_to "いいね一覧ページ", likes_path(@customer.id) %>
-  <% end %>
-</div>
-
-  <div class="row justify-content-center mt-3">
-    <div class="col-6 text-center">
-      <div class="p-3 box-shadow">
-        <div class="content">
-          <% if @customer.image.attached? %>
-            <%= image_tag @customer.image, size: "200x200" %>
-          <% else %>
-            <%= image_tag 'no_image.jpg', size: "200x200" %>
-          <% end %>
-        </div>
-
-        <div class="content">
-          <h5><strong>年齢</strong><%= @customer.age %>
-          <strong class="ml-3">名前</strong><%= @customer.name %></h5>
-        </div>
-
-        <div class="content">
-          <h5><strong>自己紹介</strong><br><%= @customer.body %></h5>
-        </div>
-
-        <div class="content">
-          <% if @customer.id == current_customer.id %>
-           <h5><strong>メールアドレス</strong><br><%= @customer.email %></h5>
-          <% end %>
-        </div>
-      </div>
-    </div>
   </div>
 
-  <% if @customer.id == current_customer.id %>
-    <div class="row mt-3">
-      <div class="col-2 offset-8">
-       <%= link_to "編集する", edit_customer_path(@customer.id), class: "button-edit" %>
-       <% if @customer.email == 'guest@example.com' %>
-       <% else %>
-        <p class="mt-2"><%= link_to "退会する", confirm_customer_path(@customer.id), class: "button-delete" %></p>
-       <% end %>
+  <div class="row justify-content-center mt-2">
+    <table>
+      <tr>
+        <th><h5>フォロー中</h5></th>
+        <td><h5>
+          <%= link_to customer_follows_customer_path(@customer) do %>
+           <%= @customer.followers.count %>
+          <% end %>
+          </h5></td>
+        <th><h5>フォロワー</h5></th>
+        <td><h5>
+          <%= link_to customer_followers_customer_path(@customer) do %>
+           <%= @customer.followeds.count %>
+          <% end %>
+          </h5></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="row justify-content-center mt-2">
+   <% if current_customer != @customer %>
+      <% if current_customer.following?(@customer) %>
+        <%= link_to "フォロー外す", customer_relationships_path(@customer.id), method: :delete, class: "button-delete" %>
+      <% else %>
+        <%= link_to "フォローする", customer_relationships_path(@customer.id), method: :post, class:"button-edit" %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="row justify-content-center mt-2">
+    <% if @customer.id == current_customer.id %>
+      <%= link_to "いいね一覧ページ", likes_path(@customer.id) %>
+    <% end %>
+  </div>
+
+    <div class="row justify-content-center mt-3">
+      <div class="col-6 text-center">
+        <div class="p-3 box-shadow">
+          <div class="content">
+            <% if @customer.image.attached? %>
+              <%= image_tag @customer.image, size: "200x200" %>
+            <% else %>
+              <%= image_tag 'no_image.jpg', size: "200x200" %>
+            <% end %>
+          </div>
+
+          <div class="content">
+            <h5><strong>年齢</strong><%= @customer.age %>
+            <strong class="ml-3">名前</strong><%= @customer.name %></h5>
+          </div>
+
+          <div class="content">
+            <h5><strong>自己紹介</strong><br><%= @customer.body %></h5>
+          </div>
+
+          <div class="content">
+            <% if @customer.id == current_customer.id %>
+             <h5><strong>メールアドレス</strong><br><%= @customer.email %></h5>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
-  <% end %>
 
-  <div class="row justify-content-center mt-4">
-  <h3>投稿一覧(<%= @restaurants.count %>件)</h3>
-</div>
+    <% if @customer.id == current_customer.id %>
+      <div class="row mt-3">
+        <div class="col-2 offset-8">
+         <%= link_to "編集する", edit_customer_path(@customer.id), class: "button-edit" %>
+         <% if @customer.email == 'guest@example.com' %>
+         <% else %>
+          <p class="mt-2"><%= link_to "退会する", confirm_customer_path(@customer.id), class: "button-delete" %></p>
+         <% end %>
+        </div>
+      </div>
+    <% end %>
 
-<div class="row justify-content-center mt-3">
-  <div class="col-9">
-    <div class="row">
-      <% @restaurants.each do |restaurant| %>
-          <div class="col-4 mb-5">
-            <div class="p-3 box-shadow">
-              <div class="content text-center">
-                <%= link_to restaurant_path(restaurant.id) do%>
-                  <% if restaurant.image.attached? %>
-                    <%= image_tag restaurant.image, size: "180x180", class: "img-resize, rounded mx-auto d-block", style: "object-fit: cover;" %>
-                  <% else %>
-                    <%= image_tag 'no_image.jpg', size: "180x180", class: "img-resize, rounded mx-auto d-block", style: "object-fit: cover;" %>
+    <div class="row justify-content-center mt-4">
+    <h3>投稿一覧(<%= @restaurants.count %>件)</h3>
+  </div>
+
+  <div class="row justify-content-center mt-3">
+    <div class="col-9">
+      <div class="row">
+        <% @restaurants.each do |restaurant| %>
+            <div class="col-4 mb-5">
+              <div class="p-3 box-shadow">
+                <div class="content text-center">
+                  <%= link_to restaurant_path(restaurant.id) do%>
+                    <% if restaurant.image.attached? %>
+                      <%= image_tag restaurant.image, size: "180x180", class: "img-resize, rounded mx-auto d-block", style: "object-fit: cover;" %>
+                    <% else %>
+                      <%= image_tag 'no_image.jpg', size: "180x180", class: "img-resize, rounded mx-auto d-block", style: "object-fit: cover;" %>
+                    <% end %>
                   <% end %>
-                <% end %>
-              </div>
-              <div class="content text-center">
-                <P><strong>店舗名</strong><br>
-                <%= link_to restaurant_path(restaurant.id) do%>
-                <%= restaurant.restaurant_name %>
-                <% end %><br>
-                <strong>料金</strong>   <%= restaurant.price.to_s(:delimited) %>円<br>
-                <strong>所在地</strong><br>
-                <%= restaurant.place %></p>
+                </div>
+                <div class="content text-center">
+                  <P><strong>店舗名</strong><br>
+                  <%= link_to restaurant_path(restaurant.id) do%>
+                  <%= restaurant.restaurant_name %>
+                  <% end %><br>
+                  <strong>料金</strong>   <%= restaurant.price.to_s(:delimited) %>円<br>
+                  <strong>所在地</strong><br>
+                  <%= restaurant.place %></p>
+                </div>
               </div>
             </div>
-          </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

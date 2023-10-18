@@ -1,82 +1,89 @@
-<% if params[:genre_id] %>
- <% %>
- <% else %>
-  <div class="row justify-content-end mr-5">
-    <div class="search_form mb-2">
-    <%= form_with url: restaurants_path, local: true, method: :get do |f| %>
-        ジャンル検索<%= f.collection_select :genre_id, @genres, :id, :name, include_blank: "--選択して下さい--" %>
-        <%= f.submit "検索", class: "button1" %>
-      <% end %>
-    </div>
-  </div>
-  <div class="row justify-content-end mr-5">
-    <div class="search_form">
-    <%= form_with url: search_path, local: true, method: :get do |f| %>
-        <%= f.select :range, options_for_select([['店舗名'], ['所在地']]) %>
-        <%= f.text_field :word, size: "18" %>
-        <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["部分一致","partial_match"]]) %>
-        <%= f.submit "検索", class: "button1" %>
-      <% end %>
-    </div>
-  </div>
-<% end %>
+<div class="flash mt-2 text-center">
+  <%= flash[:notice] %>
+</div>
 
-<div class="row justify-content-center">
+<div class="container-field mt-3 mb-6">
+
   <% if params[:genre_id] %>
-   <h3><strong>ジャンル検索結果一覧</strong></h3>
-  <% else %>
-   <h3><strong>料理店一覧</strong></h3>
+   <% %>
+   <% else %>
+    <div class="row justify-content-end mr-5">
+      <div class="search_form mb-2">
+      <%= form_with url: restaurants_path, local: true, method: :get do |f| %>
+          ジャンル検索<%= f.collection_select :genre_id, @genres, :id, :name, include_blank: "--選択して下さい--" %>
+          <%= f.submit "検索", class: "button1" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="row justify-content-end mr-5">
+      <div class="search_form">
+      <%= form_with url: search_path, local: true, method: :get do |f| %>
+          <%= f.select :range, options_for_select([['店舗名'], ['所在地']]) %>
+          <%= f.text_field :word, size: "18" %>
+          <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["部分一致","partial_match"]]) %>
+          <%= f.submit "検索", class: "button1" %>
+        <% end %>
+      </div>
+    </div>
   <% end %>
-</div>
 
-<div class="row justify-content-center">
-  <P><i class="fa-solid fa-user fa-sm" style="color: #26f734;"></i>=自分の投稿</p>
-  <p><i class="fa-solid fa-users ml-5"></i>=自分以外の投稿</p>
-</div>
+  <div class="row justify-content-center">
+    <% if params[:genre_id] %>
+     <h3><strong>ジャンル検索結果一覧</strong></h3>
+    <% else %>
+     <h3><strong>料理店一覧</strong></h3>
+    <% end %>
+  </div>
 
-<div class="row justify-content-center">
-  <div class="col-9">
-    <div class="row">
-      <% @restaurants.each do |restaurant| %>
-          <div class="col-4 mb-5">
-            <div class="p-3 box-shadow">
+  <div class="row justify-content-center">
+    <P><i class="fa-solid fa-user fa-sm" style="color: #26f734;"></i>=自分の投稿</p>
+    <p><i class="fa-solid fa-users ml-5"></i>=自分以外の投稿</p>
+  </div>
 
-              <% if restaurant.customer_id == current_customer.id %>
-               <i class="fa-solid fa-user fa-sm" style="color: #26f734;"></i>
-              <% else %>
-              <i class="fa-solid fa-users"></i>
-              <% end %>
+  <div class="row justify-content-center">
+    <div class="col-9">
+      <div class="row">
+        <% @restaurants.each do |restaurant| %>
+            <div class="col-4 mb-5">
+              <div class="p-3 box-shadow">
 
-              <div class="content text-center">
-                <%= link_to restaurant_path(restaurant.id) do%>
-                  <% if restaurant.image.attached? %>
-                    <%= image_tag restaurant.image, size: "180x180" %>
-                  <% else %>
-                    <%= image_tag 'no_image.jpg', size: "180x180" %>
-                  <% end %>
+                <% if restaurant.customer_id == current_customer.id %>
+                 <i class="fa-solid fa-user fa-sm" style="color: #26f734;"></i>
+                <% else %>
+                <i class="fa-solid fa-users"></i>
                 <% end %>
-              </div>
-              <div class="content text-center">
-                <P><strong>店舗名</strong><br>
-                <%= link_to restaurant_path(restaurant.id) do%>
-                <%= restaurant.restaurant_name %>
-                <% end %><br>
-                <strong>料金</strong>   <%= restaurant.price.to_s(:delimited) %>円<br>
-                <strong>所在地</strong><br>
-                <%= restaurant.place %></p>
-              </div>
-              <div class="row justify-content-center">
-                <table>
-                  <th>
-                      <td id="like_buttons_<%= restaurant.id %>" >
-                     <%= render "public/likes/like", restaurant: restaurant %></td>
-                     <td>:コメント<%= restaurant.comments.count %>件</td>
-                   </th>
-                </table>
+
+                <div class="content text-center">
+                  <%= link_to restaurant_path(restaurant.id) do%>
+                    <% if restaurant.image.attached? %>
+                      <%= image_tag restaurant.image, size: "180x180" %>
+                    <% else %>
+                      <%= image_tag 'no_image.jpg', size: "180x180" %>
+                    <% end %>
+                  <% end %>
+                </div>
+                <div class="content text-center">
+                  <P><strong>店舗名</strong><br>
+                  <%= link_to restaurant_path(restaurant.id) do%>
+                  <%= restaurant.restaurant_name %>
+                  <% end %><br>
+                  <strong>料金</strong>   <%= restaurant.price.to_s(:delimited) %>円<br>
+                  <strong>所在地</strong><br>
+                  <%= restaurant.place %></p>
+                </div>
+                <div class="row justify-content-center">
+                  <table>
+                    <th>
+                        <td id="like_buttons_<%= restaurant.id %>" >
+                       <%= render "public/likes/like", restaurant: restaurant %></td>
+                       <td>:コメント<%= restaurant.comments.count %>件</td>
+                     </th>
+                  </table>
+                </div>
               </div>
             </div>
-          </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

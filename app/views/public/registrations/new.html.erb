@@ -1,56 +1,62 @@
-<div class="row justify-content-center">
- <%= render 'public/customers/error_messages', customer: @customer %>
+<div class="flash mt-2 text-center">
+  <%= flash[:notice] %>
 </div>
 
-<div class="row justify-content-center">
-  <h2>新規会員登録</h2>
-</div>
- <div class="row justify-content-center mt-2">
-   <%= form_with model: @customer, url: customer_registration_path do |f| %>
-   <table class="table table-borderless my-auto">
-         <tr>
-           <th class="title mt-2">名前(ニックネーム)</th>
-           <td><%= f.text_field :name, placeholder: "foodfighter" %></td>
-         </tr>
+<div class="container-field mt-3 mb-6">
+  <div class="row justify-content-center">
+   <%= render 'public/customers/error_messages', customer: @customer %>
+  </div>
 
-         <tr>
-           <th>年齢</th>
-           <td><%= f.text_field :age,  placeholder: "20" %></td>
-         </tr>
+  <div class="row justify-content-center">
+    <h2>新規会員登録</h2>
+  </div>
+   <div class="row justify-content-center mt-2">
+     <%= form_with model: @customer, url: customer_registration_path do |f| %>
+     <table class="table table-borderless my-auto">
+           <tr>
+             <th class="title mt-2">名前(ニックネーム)</th>
+             <td><%= f.text_field :name, placeholder: "foodfighter" %></td>
+           </tr>
 
-         <tr>
-           <th>プロフィール画像</th>
-           <td><%= f.file_field :image, accept: "image/*" %></td>
-         </tr>
+           <tr>
+             <th>年齢</th>
+             <td><%= f.text_field :age,  placeholder: "20" %></td>
+           </tr>
 
-         <tr>
-           <th>自己紹介</th>
-           <td><%= f.text_area :body, placeholder: "200字以内", size: "55×8" %></td>
-         </tr>
+           <tr>
+             <th>プロフィール画像</th>
+             <td><%= f.file_field :image, accept: "image/*" %></td>
+           </tr>
 
-         <tr>
-           <th>メールアドレス</th>
-           <td><%= f.email_field :email, autofocus: true, placeholder: "メールアドレス" %></td>
-         </tr>
+           <tr>
+             <th>自己紹介</th>
+             <td><%= f.text_area :body, placeholder: "200字以内", size: "55×8" %></td>
+           </tr>
 
-         <tr>
-           <th>パスワード(6文字以上)</th>
-           <td><%= f.password_field :password, placeholder: "パスワード"  %></td>
-         </tr>
+           <tr>
+             <th>メールアドレス</th>
+             <td><%= f.email_field :email, autofocus: true, placeholder: "メールアドレス" %></td>
+           </tr>
 
-         <tr>
-           <th>パスワード(確認用)</th>
-           <td><%= f.password_field :password, placeholder: "確認用"  %></td>
-         </tr>
-   </table>
+           <tr>
+             <th>パスワード(6文字以上)</th>
+             <td><%= f.password_field :password, placeholder: "パスワード"  %></td>
+           </tr>
 
-</div>
+           <tr>
+             <th>パスワード(確認用)</th>
+             <td><%= f.password_field :password, placeholder: "確認用"  %></td>
+           </tr>
+     </table>
 
-<div class="row justify-content-center mt-2">
- <%= f.submit "新規登録", class: "button-new" %>
-</div>
-<% end %>
+  </div>
 
-<div class="row justify-content-center mt-3">
-  <h5>登録済みの場合はこちら→<%= render "public/shared/links" %></h5>
+  <div class="row justify-content-center mt-2">
+   <%= f.submit "新規登録", class: "button-new" %>
+  </div>
+  <% end %>
+
+  <div class="row justify-content-center mt-3">
+    <h5>登録済みの場合はこちら→<%= render "public/shared/links" %></h5>
+  </div>
 </div>

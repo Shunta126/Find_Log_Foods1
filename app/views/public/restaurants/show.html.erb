@@ -1,100 +1,106 @@
-<div class="row justify-content-center">
-  <% if @error_comment.present? %>
-    <div class="alert alert-danger text-center">
-      <ul>
-        <% @error_comment.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+<div class="flash mt-2 text-center">
+  <%= flash[:notice] %>
+</div>
+
+<div class="container-field mt-3 mb-6">
+  <div class="row justify-content-center">
+    <% if @error_comment.present? %>
+      <div class="alert alert-danger text-center">
+        <ul>
+          <% @error_comment.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="row justify-content-center">
+     <h4><strong>店舗詳細ページ</strong></h4>
+  </div>
+
+    <div class="row justify-content-center mt-3">
+      <div class="col-5 justify-content-center text-center">
+        <div class="p-3 box-shadow">
+          <div class="content">
+            <% if @restaurant.image.attached? %>
+              <%= image_tag @restaurant.image, size: "200x200" %>
+            <% else %>
+              <%= image_tag 'no_image.jpg', size: "200x200" %>
+            <% end %>
+          </div>
+
+          <div class="content">
+            <h5><strong>店舗名</strong><br><%= @restaurant.restaurant_name %></h5>
+          </div>
+
+          <div class="content">
+            <h5><strong>ジャンル</strong><br><%= @restaurant.genre.name %></h5>
+          </div>
+
+          <div class="content">
+            <h5><strong>料理名<br></strong><%= @restaurant.food_name %></h5>
+          </div>
+
+          <div class="content">
+            <h5><strong>金額<br></strong><%= @restaurant.price.to_s(:delimited) %>円</h5>
+          </div>
+
+          <div class="content">
+            <h5>
+              <strong>投稿者<br></strong>
+              <%= link_to customer_path(@restaurant.customer.id) do%>
+               <%= @restaurant.customer.name %>
+              <% end %>
+            </h5>
+          </div>
+
+          <div class="content">
+            <h5><strong>感想・評価<br></strong><%= @restaurant.body %></h5>
+          </div>
+
+          <div class="content">
+            <h5><strong>所在地<br></strong><%= @restaurant.place %></h5>
+          </div>
+
+          <div class="content">
+            <P id="like_buttons_<%= @restaurant.id %>" >
+            <%= render "public/likes/like", restaurant: @restaurant %></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-5">
+        <div class="content text-center">
+          <div id="comment_counter">
+            <%= render "public/comments/counter", restaurant: @restaurant %>
+          </div>
+        </div>
+
+        <div id="comment_index">
+          <%= render "public/comments/index", restaurant: @restaurant %>
+        </div>
+
+        <div class="content text-center mt-3">
+           <%= render "public/comments/form", restaurant: @restaurant, comment: @comment %>
+         </div>
+
+      </div>
+    </div>
+
+  <% if @restaurant.customer_id == current_customer.id %>
+    <div class="row mt-3">
+      <div class="col-2 offset-4">
+         <%= link_to "編集する", edit_restaurant_path(@restaurant.id), class: "button-edit" %>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @restaurant.customer_id == current_customer.id %>
+    <div class="row mt-3">
+      <div class="col-2 offset-4">
+         <%= link_to "削除する", restaurant_path(@restaurant.id), method: :delete, class: "button-delete", "data-confirm" => "本当に削除しますか？" %>
+      </div>
     </div>
   <% end %>
 </div>
-
-<div class="row justify-content-center">
-   <h4><strong>店舗詳細ページ</strong></h4>
-</div>
-
-  <div class="row justify-content-center mt-3">
-    <div class="col-5 justify-content-center text-center">
-      <div class="p-3 box-shadow">
-        <div class="content">
-          <% if @restaurant.image.attached? %>
-            <%= image_tag @restaurant.image, size: "200x200" %>
-          <% else %>
-            <%= image_tag 'no_image.jpg', size: "200x200" %>
-          <% end %>
-        </div>
-
-        <div class="content">
-          <h5><strong>店舗名</strong><br><%= @restaurant.restaurant_name %></h5>
-        </div>
-
-        <div class="content">
-          <h5><strong>ジャンル</strong><br><%= @restaurant.genre.name %></h5>
-        </div>
-
-        <div class="content">
-          <h5><strong>料理名<br></strong><%= @restaurant.food_name %></h5>
-        </div>
-
-        <div class="content">
-          <h5><strong>金額<br></strong><%= @restaurant.price.to_s(:delimited) %>円</h5>
-        </div>
-
-        <div class="content">
-          <h5>
-            <strong>投稿者<br></strong>
-            <%= link_to customer_path(@restaurant.customer.id) do%>
-             <%= @restaurant.customer.name %>
-            <% end %>
-          </h5>
-        </div>
-
-        <div class="content">
-          <h5><strong>感想・評価<br></strong><%= @restaurant.body %></h5>
-        </div>
-
-        <div class="content">
-          <h5><strong>所在地<br></strong><%= @restaurant.place %></h5>
-        </div>
-
-        <div class="content">
-          <P id="like_buttons_<%= @restaurant.id %>" >
-          <%= render "public/likes/like", restaurant: @restaurant %></p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-5">
-      <div class="content text-center">
-        <div id="comment_counter">
-          <%= render "public/comments/counter", restaurant: @restaurant %>
-        </div>
-      </div>
-
-      <div id="comment_index">
-        <%= render "public/comments/index", restaurant: @restaurant %>
-      </div>
-
-      <div class="content text-center mt-3">
-         <%= render "public/comments/form", restaurant: @restaurant, comment: @comment %>
-       </div>
-
-    </div>
-  </div>
-
-<% if @restaurant.customer_id == current_customer.id %>
-  <div class="row mt-3">
-    <div class="col-2 offset-4">
-       <%= link_to "編集する", edit_restaurant_path(@restaurant.id), class: "button-edit" %>
-    </div>
-  </div>
-<% end %>
-
-<% if @restaurant.customer_id == current_customer.id %>
-  <div class="row mt-3">
-    <div class="col-2 offset-4">
-       <%= link_to "削除する", restaurant_path(@restaurant.id), method: :delete, class: "button-delete", "data-confirm" => "本当に削除しますか？" %>
-    </div>
-  </div>
-<% end %>
