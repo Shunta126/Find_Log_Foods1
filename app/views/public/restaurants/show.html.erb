@@ -24,43 +24,43 @@
         <div class="p-3 box-shadow">
           <div class="content">
             <% if @restaurant.image.attached? %>
-              <%= image_tag @restaurant.image, size: "200x200" %>
+              <%= image_tag @restaurant.image, size: "350x240", style: "object-fit: cover; border: 3px solid #FFC7AF;" %>
             <% else %>
-              <%= image_tag 'no_image.jpg', size: "200x200" %>
+              <%= image_tag 'restaaurant_no_img.jpeg', size: "300x200", style: "object-fit: cover; border: 3px solid #FFC7AF;" %>
             <% end %>
           </div>
 
-          <div class="content">
-            <h5><strong>店舗名</strong><br><%= @restaurant.restaurant_name %></h5>
+          <div class="content mt-2">
+            <h5><strong class="title">店舗名</strong>  <%= @restaurant.restaurant_name %></h5>
           </div>
 
-          <div class="content">
-            <h5><strong>ジャンル</strong><br><%= @restaurant.genre.name %></h5>
+          <div class="content mt-2">
+            <h5><strong class="title">ジャンル</strong>  <%= @restaurant.genre.name %></h5>
           </div>
 
-          <div class="content">
-            <h5><strong>料理名<br></strong><%= @restaurant.food_name %></h5>
+          <div class="content mt-2">
+            <h5><strong class="title">料理名</strong>  <%= @restaurant.food_name %></h5>
           </div>
 
-          <div class="content">
-            <h5><strong>金額<br></strong><%= @restaurant.price.to_s(:delimited) %>円</h5>
+          <div class="content mt-2">
+            <h5><strong class="title">金額</strong>  <%= @restaurant.price.to_s(:delimited) %>円</h5>
           </div>
 
-          <div class="content">
+          <div class="content mt-2">
             <h5>
-              <strong>投稿者<br></strong>
+              <strong class="title">投稿者</strong>
               <%= link_to customer_path(@restaurant.customer.id) do%>
                <%= @restaurant.customer.name %>
               <% end %>
             </h5>
           </div>
 
-          <div class="content">
-            <h5><strong>感想・評価<br></strong><%= @restaurant.body %></h5>
+          <div class="content mt-2">
+            <h5><strong class="title">感想・評価<br></strong><%= @restaurant.body %></h5>
           </div>
 
-          <div class="content">
-            <h5><strong>所在地<br></strong><%= @restaurant.place %></h5>
+          <div class="content mt-2">
+            <h5><strong class="title">所在地<br></strong><%= @restaurant.place %></h5>
           </div>
 
           <div class="content">

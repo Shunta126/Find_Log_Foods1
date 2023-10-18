@@ -52,9 +52,9 @@
                 <div class="content text-center">
                   <%= link_to admin_restaurant_path(restaurant.id) do%>
                     <% if restaurant.image.attached? %>
-                      <%= image_tag restaurant.image, size: "180x180" %>
+                      <%= image_tag restaurant.image, size: "215x150", style: "object-fit: cover; border: 3px solid #FFC7AF;" %>
                     <% else %>
-                      <%= image_tag 'no_image.jpg', size: "180x180" %>
+                      <%= image_tag 'restaaurant_no_img.jpeg', size: "215x150", style: "object-fit: cover; border: 3px solid #FFC7AF;" %>
                     <% end %>
                   <% end %>
                 </div>
@@ -89,9 +89,9 @@
                 <div class="content text-center">
                   <%= link_to admin_restaurant_path(restaurant.id) do%>
                     <% if restaurant.image.attached? %>
-                      <%= image_tag restaurant.image, size: "180x180" %>
+                      <%= image_tag restaurant.image, size: "215x150", style: "object-fit: cover; border: 3px solid #FFC7AF;" %>
                     <% else %>
-                      <%= image_tag 'no_image.jpg', size: "180x180" %>
+                      <%= image_tag 'restaaurant_no_img.jpeg', size: "215x150", style: "object-fit: cover; border: 3px solid #FFC7AF;" %>
                     <% end %>
                   <% end %>
                 </div>
