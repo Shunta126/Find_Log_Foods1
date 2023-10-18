@@ -142,3 +142,74 @@ h3:after {
 .carousel-item {
   width: 100%;
 }
+.button-follow {
+  min-width: 150px;
+  height: 35px;
+  color: #fff;
+  padding: 5px 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  outline: none;
+  border-radius: 5px;
+  z-index: 0;
+  background: #fff;
+  overflow: hidden;
+  border: 2px solid #4433ff;
+  color: #4433ff;
+}
+.button-follow:hover {
+  color: #fff;
+}
+.button-follow:hover:after {
+  width: 100%;
+}
+.button-follow:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  transition: all 0.3s ease;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background: #4433ff;
+}
+
+.button-unfollow {
+  min-width: 150px;
+  height: 35px;
+  color: #fff;
+  padding: 5px 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  outline: none;
+  border-radius: 5px;
+  z-index: 0;
+  background: #fff;
+  overflow: hidden;
+  border: 2px solid #d90429;
+  color: #d90429;
+}
+.button-unfollow:hover {
+  color: #fff;
+}
+.button-unfollow:hover:after {
+  width: 100%;
+}
+.button-unfollow:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  transition: all 0.3s ease;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background: #d90429;
+}

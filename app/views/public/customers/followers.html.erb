@@ -41,9 +41,9 @@
                 <div class="content text-center">
                   <% if current_customer != customer %>
                     <% if current_customer.following?(customer) %>
-                      <%= link_to "フォロー外す", customer_relationships_path(customer.id), method: :delete, class: "button-delete" %>
+                      <%= link_to "フォロー外す", customer_relationships_path(customer.id), method: :delete, class: "button-unfollow" %>
                     <% else %>
-                      <%= link_to "フォローする", customer_relationships_path(customer.id), method: :post, class:"button-edit" %>
+                      <%= link_to "フォローする", customer_relationships_path(customer.id), method: :post, class:"button-follow" %>
                     <% end %>
                   <% end %>
                 </div>

@@ -11,9 +11,9 @@
             <div class="col-3 mb-5">
               <div class="p-3 box-shadow">
                 <% if customer.is_deleted == false %>
-                 <i class="fa-solid fa-circle" style="color: #50f708;"></i>
+                 <i class="fa-solid fa-user-check fa-sm" style="color: #1fe01f;"></i>
                 <% else %>
-                 <i class="fa-solid fa-circle" style="color: #b4b1b4;"></i>
+                 <i class="fa-solid fa-user-check fa-sm" style="color: #8b8d8b;"></i>
                 <% end %>
                 <%= link_to admin_customer_path(customer.id) do%>
                   <div class="content text-center">

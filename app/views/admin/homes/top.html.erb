@@ -16,8 +16,8 @@
   </div>
 
   <div class="row justify-content-center">
-    <P><i class="fa-solid fa-circle" style="color: #50f708;"></i>=会員</p>
-    <p><i class="fa-solid fa-circle ml-5" style="color: #b4b1b4;"></i>=退会済み</p>
+    <P><i class="fa-solid fa-user-check fa-sm" style="color: #1fe01f;"></i>=会員</p>
+    <p class="icon ml-3"><i class="fa-solid fa-user-check fa-sm" style="color: #8b8d8b;"></i>=退会済み</p>
   </div>
 
   <div class="row justify-content-center">
@@ -27,9 +27,9 @@
             <div class="col-3 mb-5">
               <div class="p-3 box-shadow">
                 <% if customer.is_deleted == false %>
-                 <i class="fa-solid fa-circle" style="color: #50f708;"></i>
+                 <i class="fa-solid fa-user-check fa-sm" style="color: #1fe01f;"></i>
                 <% else %>
-                 <i class="fa-solid fa-circle" style="color: #b4b1b4;"></i>
+                 <i class="fa-solid fa-user-check fa-sm" style="color: #8b8d8b;"></i>
                 <% end %>
 
                 <%= link_to admin_customer_path(customer.id) do%>
