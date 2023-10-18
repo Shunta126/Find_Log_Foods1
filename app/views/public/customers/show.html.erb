@@ -115,6 +115,15 @@
                   <strong>所在地</strong><br>
                   <%= restaurant.place %></p>
                 </div>
+                <div class="row justify-content-center">
+                  <table>
+                    <th>
+                        <td id="like_buttons_<%= restaurant.id %>" >
+                       <%= render "public/likes/like", restaurant: restaurant %></td>
+                       <td>:コメント<%= restaurant.comments.count %>件</td>
+                     </th>
+                  </table>
+                </div>
               </div>
             </div>
         <% end %>
