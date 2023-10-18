@@ -3,8 +3,13 @@
   <table class="table">
     <th>
       <td style="width:25%">
+        <% if comment.customer.image.attached? %>
+         <%= image_tag comment.customer.image, size: "40x40", style: "object-fit: cover; border-radius: 50%; border: 3px solid #99CCCC;" %>
+        <% else %>
+          <%= image_tag 'no_image.jpg', size: "40x40", style: "object-fit: cover; border-radius: 50%; border: 3px solid #99CCCC;" %>
+        <% end %>
         <%= link_to customer_path(comment.customer_id) do%>
-        <%= comment.customer.name %>
+         <%= comment.customer.name %>
         <% end %>
       </td>
 
