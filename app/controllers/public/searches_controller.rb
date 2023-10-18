@@ -6,13 +6,13 @@ class Public::SearchesController < ApplicationController
     @word = params[:word]
 
     if @range == "customer"
-      @customers = Customer.looks(params[:search], params[:word])
+      @customers = Customer.looks(params[:search], params[:word]).order(created_at: :desc)
 
     elsif @range == "店舗名"
-      @restaurants = Restaurant.looks(params[:search], params[:word], params[:range])
+      @restaurants = Restaurant.looks(params[:search], params[:word], params[:range]).order(created_at: :desc)
 
     elsif @range == "所在地"
-      @restaurants = Restaurant.looks(params[:search], params[:word], params[:range])
+      @restaurants = Restaurant.looks(params[:search], params[:word], params[:range]).order(created_at: :desc)
     end
   end
 

@@ -14,7 +14,7 @@ class Public::LikesController < ApplicationController
   end
 
   def index
-    likes = Like.where(customer_id: current_customer.id).pluck(:restaurant_id)
+    likes = Like.where(customer_id: current_customer.id).order(created_at: :desc).pluck(:restaurant_id)
     @like_restaurants = Restaurant.find(likes)
   end
 
