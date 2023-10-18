@@ -36,9 +36,9 @@
                   <div class="content text-center">
                     <div class="img-container">
                       <% if customer.image.attached? %>
-                        <%= image_tag customer.image, size: "150x150" %>
+                        <%= image_tag customer.image, size: "150x150", style: "object-fit: cover; border-radius: 50%; border: 3px solid #99CCCC;" %>
                       <% else %>
-                        <%= image_tag 'no_image.jpg', size: "150x150" %>
+                        <%= image_tag 'no_image.jpg', size: "150x150", style: "object-fit: cover; border-radius: 50%; border: 3px solid #99CCCC;" %>
                       <% end %>
                     </div>
                   </div>

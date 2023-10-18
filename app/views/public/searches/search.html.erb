@@ -18,10 +18,10 @@
                 <%= link_to customer_path(customer.id) do%>
                   <div class="content text-center">
                     <% if customer.image.attached? %>
-                      <%= image_tag customer.image, size: "150x150" %>
-                    <% else %>
-                      <%= image_tag 'no_image.jpg', size: "150x150" %>
-                    <% end %>
+                        <%= image_tag customer.image, size: "150x150", style: "object-fit: cover; border-radius: 50%; border: 3px solid #99CCCC;" %>
+                      <% else %>
+                        <%= image_tag 'no_image.jpg', size: "150x150", style: "object-fit: cover; border-radius: 50%; border: 3px solid #99CCCC;" %>
+                      <% end %>
                   </div>
                 <% end %>
                 <div class="content text-center">

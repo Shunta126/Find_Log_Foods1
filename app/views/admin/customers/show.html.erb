@@ -12,9 +12,9 @@
       <div class="p-3 box-shadow">
         <div class="content">
           <% if @customer.image.attached? %>
-            <%= image_tag @customer.image, size: "200x200" %>
+            <%= image_tag @customer.image, size: "200x200", style: "object-fit: cover; border-radius: 50%; border: 3px solid #99CCCC;" %>
           <% else %>
-            <%= image_tag 'no_image.jpg', size: "200x200" %>
+            <%= image_tag 'no_image.jpg', size: "200x200", style: "object-fit: cover; border-radius: 50%; border: 3px solid #99CCCC;" %>
           <% end %>
         </div>
 

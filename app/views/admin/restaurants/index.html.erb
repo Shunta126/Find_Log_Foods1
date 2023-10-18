@@ -23,7 +23,7 @@
                 <div class="content text-center">
                   <%= link_to admin_restaurant_path(restaurant.id) do%>
                     <% if restaurant.image.attached? %>
-                      <%= image_tag restaurant.image, size: "180x180" %>
+                      <%= image_tag restaurant.image, width: 220, height: 160, style: "object-fit: cover;" %>
                     <% else %>
                       <%= image_tag 'no_image.jpg', size: "180x180" %>
                     <% end %>
