@@ -2,12 +2,20 @@
   <div class="top">
     <div class="main-image">
      <%= image_tag "kitchen-5055083_1280", class: "d-block w-100", alt: "..." %>
-    </div>
-
-    <div class="carousel-caption d-none d-md-block top-message text-body box mx-auto">
-      <p>ようこそ、ながのCAKEへ！<br>このサイトは、ケーキ販売のECサイトになります。<br>
-        会員でない方も商品の閲覧はできますが、<br>購入には会員登録が必要になります。
-      </p>
+     <p class="center">Find Log Foods</p>
+     <% if customer_signed_in? %>
+       <p class="top-body">
+         ようこそ！<br>
+         料理と人が繋がれる場所へ！<br>
+         いざ始めましょう！
+       </p>
+     <% else %>
+       <p class="top-body">
+         ログイン後にお店の投稿、検索が出来ます！<br>
+         ヘッダーのリンクから各種ログイン、新規登録が可能です！<br>
+         ※ゲストログイン時は投稿機能等、制限がかかっています。
+       </p>
+     <% end %>
     </div>
   </div>
 </div>
