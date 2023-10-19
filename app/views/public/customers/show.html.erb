@@ -42,7 +42,9 @@
 
   <div class="row justify-content-center mt-2">
     <% if @customer.id == current_customer.id %>
-      <%= link_to "いいね一覧ページ", likes_path(@customer.id) %>
+      <%= link_to likes_path(@customer.id), class: "link" do %>
+       <i class="fa-solid fa-heart fa-lg" style="color: #f53d0f;"></i>一覧ページ
+      <% end %>
     <% end %>
   </div>
 
