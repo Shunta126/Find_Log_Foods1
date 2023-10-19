@@ -243,3 +243,27 @@ h3:after {
   font-weight: bold;
   text-shadow: 1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
 }
+
+.about-main {
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  font-size: 70px;
+  color: #ffffff;
+  font-family: cursive;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.about-body {
+  position: absolute;
+  top: 35%;
+  left: 33%;
+  transform: translate(-50%, -50%);
+  font-size: 25px;
+  color: #ffffff;
+  font-family: cursive;
+  font-style: italic;
+  font-weight: bold;
+}
