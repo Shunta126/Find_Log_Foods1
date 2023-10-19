@@ -4,7 +4,7 @@
       <h3><strong>会員検索結果一覧</strong></h3>
     </div>
 
-    <div class="row justify-content-center">
+  <div class="row justify-content-center">
     <div class="col-9">
       <div class="row justify-content-center">
         <% @customers.each do |customer| %>
@@ -44,6 +44,9 @@
             </div>
         <% end %>
       </div>
+      <div class="row justify-content-center">
+       <%= paginate @customers %>
+       </div>
     </div>
   </div>
 
@@ -95,6 +98,9 @@
             </div>
         <% end %>
       </div>
+      <div class="row justify-content-center">
+     　  <%= paginate @restaurants %>
+  　   </div>
     </div>
   </div>
 
@@ -103,7 +109,7 @@
       <h3><strong>店舗所在地検索結果一覧</strong></h3>
     </div>
 
-    <div class="row justify-content-center">
+  <div class="row justify-content-center">
     <div class="col-9">
       <div class="row">
         <% @restaurants.each do |restaurant| %>
@@ -136,8 +142,8 @@
                 <div class="row justify-content-center">
                   <table>
                     <th>
-                        <td id="like_buttons_<%= restaurant.id %>" >
-                       <%= render "public/likes/like", restaurant: restaurant %></td>
+                      <td id="like_buttons_<%= restaurant.id %>" >
+                        <%= render "public/likes/like", restaurant: restaurant %></td>
                        <td>:コメント<%= restaurant.comments.count %>件</td>
                      </th>
                   </table>
@@ -146,7 +152,10 @@
             </div>
         <% end %>
       </div>
-    </div>
-  </div>
+        <div class="row justify-content-center">
+         <%= paginate @restaurants %>
+        </div>
+     </div>
+   </div>
   <% end %>
 </div>

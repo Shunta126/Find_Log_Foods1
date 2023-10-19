@@ -2,7 +2,7 @@ class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
 
   def index
-    @customers = Customer.all.order(created_at: :desc)
+    @customers = Customer.all.order(created_at: :desc).page(params[:page]).per(2)
   end
 
   def show
@@ -63,7 +63,7 @@ class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
 
   def index
-    @customers = Customer.all.order(created_at: :desc)
+    @customers = Customer.all.order(created_at: :desc).page(params[:page]).per(28)
   end
 
   def show

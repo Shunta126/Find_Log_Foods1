@@ -5,9 +5,9 @@ class Public::RestaurantsController < ApplicationController
     @genres = Genre.all
     if params[:genre_id]
       @genre = Genre.find(params[:genre_id])
-      @restaurants = @genre.restaurants.all.order(created_at: :desc)
+      @restaurants = @genre.restaurants.all.order(created_at: :desc).page(params[:page]).per(24)
     else
-      @restaurants = Restaurant.all.order(created_at: :desc)
+      @restaurants = Restaurant.all.order(created_at: :desc).page(params[:page]).per(24)
     end
 
   end
