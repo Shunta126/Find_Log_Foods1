@@ -11,7 +11,6 @@ class Public::CommentsController < ApplicationController
       flash[:notice] = "会員登録後に送信できます！"
       redirect_to restaurant_path(restaurant)
     elsif comment.save
-      redirect_to restaurant_path(restaurant)
     else
      @error_comment = comment
      @restaurant = Restaurant.find(params[:restaurant_id])
@@ -22,7 +21,6 @@ class Public::CommentsController < ApplicationController
 
  def destroy
     Comment.find(params[:id]).destroy
-    redirect_to restaurant_path(params[:restaurant_id])
  end
 
  private
