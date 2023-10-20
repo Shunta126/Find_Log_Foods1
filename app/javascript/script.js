@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).on('turbolinks:load',function() {
   // スクロールトップボタンをクリックしたときの処理
   $('.scroll-top-btn').click(function(e) {
     e.preventDefault();
