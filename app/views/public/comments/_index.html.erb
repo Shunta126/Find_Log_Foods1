@@ -13,13 +13,15 @@
         <% end %>
       </td>
 
-      <td style="width:60%">
+      <td style="width:70%">
         <%= comment.comment %>
       </td>
 
-      <td style="width:15%">
+      <td style="width:5%">
         <% if comment.customer == current_customer %>
-         <%= link_to "削除", restaurant_comment_path(comment.restaurant, comment), class: "button-delete", method: :delete, remote:true, data: {"turbolinks" => false} %>
+          <%= link_to restaurant_comment_path(comment.restaurant, comment), method: :delete, remote:true, data: {"turbolinks" => false} do %>
+           <i class="fa-regular fa-trash-can fa-lg" style="color: #ea2806;"></i>
+          <% end %>
         <% end %>
       </td>
     </th>
