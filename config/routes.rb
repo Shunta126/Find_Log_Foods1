@@ -22,6 +22,8 @@ scope module: :public do
     resource :likes, only: [:create, :destroy]
   end
   resources :likes, only: [:index]
+  resources :messages, only: [:create]
+  resources :rooms, only: [:create,:show]
 end
 
 devise_scope :customer do

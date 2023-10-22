@@ -12,6 +12,8 @@ class Customer < ApplicationRecord
   has_many :followeds, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :following_customers, through: :followers, source: :followed
   has_many :follower_customers, through: :followeds, source: :follower
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
 
 
   validates :name, presence: true, length: {maximum: 20 }
