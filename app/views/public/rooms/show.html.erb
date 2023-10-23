@@ -25,10 +25,10 @@
 
 <div class="row justify-content-center mt-4">
   <%= form_with model: @message, url:messages_path, local: true, method: :post do |f| %>
-   <%= f.text_field :message %>
+   <%= f.text_area :message, size: "30×6" %>
    <%= f.hidden_field :room_id, value: @room.id %>
 </div>
 <div class="row justify-content-center mt-2">
- <%= f.submit "送信する" %>
+ <%= f.submit "送信する", class: "button-new" %>
 <% end %>
 </div>
