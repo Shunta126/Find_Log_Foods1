@@ -7,6 +7,7 @@ class Public::MessagesController < ApplicationController
     if @message.save
       redirect_to room_path(@message.room)
     else
+      flash[:notice] = "未入力、もしくは200字をオーバーしています。"
       redirect_back(fallback_location: root_path)
     end
   end

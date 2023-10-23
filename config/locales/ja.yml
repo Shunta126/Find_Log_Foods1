@@ -12,6 +12,8 @@ ja:
         food_name: 料理名
         body: 感想・評価
         price: 金額
+      message:
+        message: メッセージ
 
 ---
 ja:
