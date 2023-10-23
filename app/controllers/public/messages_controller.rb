@@ -1,11 +1,11 @@
 class Public::MessagesController < ApplicationController
   before_action :authenticate_customer!, :only => [:create]
 
-   def create
-    message = Message.new(message_params)
-    message.customer_id = current_customer.id
-    if message.save
-      redirect_to room_path(message.room)
+  def create
+    @message = Message.new(message_params)
+    @message.customer_id = current_customer.id
+    if @message.save
+      redirect_to room_path(@message.room)
     else
       redirect_back(fallback_location: root_path)
     end
@@ -14,6 +14,6 @@ class Public::MessagesController < ApplicationController
   private
 
     def message_params
-      params.require(:message).permit(:room_id, :body)
+      params.require(:message).permit(:room_id, :body, :message)
     end
 end

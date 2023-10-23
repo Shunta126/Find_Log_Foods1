@@ -1,13 +1,34 @@
-<% @messages.each do |m| %>
-<% if m.customer_id == current_customer.id %>
-<%= m.message %>
-<% else %>
-<%= m.message %>
-<% end %>
+<div class="container-field mt-3 mb-6">
+  <div class="row justify-content-center mt-3">
+    <h3><strong><%= @another_entry.customer.name %>さんとのメッセージ</strong></h3>
+  </div>
 
-<%= form_for @message do |f| %>
-<%= f.text_field :message %>
-<%= f.hidden_field :room_id, value => @room.id %>
-<%= f.submit "送信する" %>
+  <div class="row justify-content-center mt-2">
+    <div class="col-5">
+      <div class="message-body">
+        <% @messages.each do |m| %>
+          <% if m.customer_id == current_customer.id %>
+            <div class="my-body">
+              <p class="my-message"><%= m.message %></p>
+            </div>
+          <% else %>
+            <div class="other-body">
+              <div class="other-message">
+                <%= m.message %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+<div class="row justify-content-center mt-4">
+  <%= form_with model: @message, url:messages_path, local: true, method: :post do |f| %>
+   <%= f.text_field :message %>
+   <%= f.hidden_field :room_id, value: @room.id %>
+</div>
+<div class="row justify-content-center mt-2">
+ <%= f.submit "送信する" %>
 <% end %>
-<% end %>
+</div>

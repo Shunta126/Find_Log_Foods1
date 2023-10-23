@@ -292,3 +292,37 @@ h3:after {
   color: #fff; /* ホバー時のテキストの色変更 */
   transform: scale(1.1); /* ホバー時の拡大率変更 */
 }
+
+.message-body {
+  height: 70vh;
+  background: #8DB4E5;
+  overflow-y: scroll;
+  box-shadow: 8px 10px 9px 7px rgba(0,0,0,0.21);
+  -webkit-box-shadow: 8px 10px 9px 7px rgba(0,0,0,0.21);
+  -moz-box-shadow: 8px 10px 9px 7px rgba(0,0,0,0.21);
+}
+
+.my-message {
+  display: inline-block;
+  padding: 5px;
+  margin: 10px;
+  background: #3fc93c;
+  border-radius: 10px;
+}
+
+.my-body {
+  text-align: right;
+}
+
+.other-message {
+  display: inline-block;
+  padding: 5px;
+  margin: 10px;
+  background: #f8f9fa;
+  border-radius: 10px;
+}
+
+.other-body {
+  text-align: left;
+  width: 60%;
+}
