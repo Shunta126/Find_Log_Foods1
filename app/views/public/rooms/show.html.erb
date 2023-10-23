@@ -19,10 +19,19 @@
         <% @messages.each do |m| %>
           <% if m.customer_id == current_customer.id %>
             <div class="my-body">
-              <p class="my-message"><%= m.message %></p>
+              <div class="my-message">
+                <%= m.message %>
+              </div>
             </div>
           <% else %>
             <div class="other-body">
+              <span class="ml-2">
+                <% if m.customer.image.attached? %>
+                 <%= image_tag m.customer.image, size: "35x35", style: "object-fit: cover; border-radius: 50%; border: 3px solid #f8f9fa;" %>
+                <% else %>
+                  <%= image_tag 'no_image.jpg', size: "35x35", style: "object-fit: cover; border-radius: 50%; border: 3px solid #f8f9fa" %>
+                <% end %>
+              </span>
               <div class="other-message">
                 <%= m.message %>
               </div>
