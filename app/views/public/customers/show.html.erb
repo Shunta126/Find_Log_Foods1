@@ -43,12 +43,12 @@
   <div class="row justify-content-center mt-2">
     <% unless @customer.id == current_customer.id %>
      <% if @is_room.present? %>
-       <%= link_to 'メッセージへ', room_path(@room_id) %>
+       <%= link_to 'メッセージへ', room_path(@room_id), class:"button-message" %>
      <% else %>
        <%= form_with model: @room, url:rooms_path, local: true, method: :post do |f| %>
          <%= fields_for @entry do |e| %>
           <%= e.hidden_field :customer_id, value: @customer.id %>
-          <%= f.submit "チャットを始める", class:"btn btn-primary" %>
+          <%= f.submit "チャットを始める", class:"button-dm" %>
          <% end %>
         <% end %>
       <% end %>

@@ -16,24 +16,24 @@
   <div class="row justify-content-center mt-2">
     <div class="col-5">
       <div class="message-body">
-        <% @messages.each do |m| %>
-          <% if m.customer_id == current_customer.id %>
+        <% @messages.each do |message| %>
+          <% if message.customer_id == current_customer.id %>
             <div class="my-body">
               <div class="my-message">
-                <%= m.message %>
+                <%= message.message %>
               </div>
             </div>
           <% else %>
             <div class="other-body">
               <span class="ml-2">
-                <% if m.customer.image.attached? %>
-                 <%= image_tag m.customer.image, size: "35x35", style: "object-fit: cover; border-radius: 50%; border: 3px solid #f8f9fa;" %>
+                <% if message.customer.image.attached? %>
+                 <%= image_tag message.customer.image, size: "35x35", style: "object-fit: cover; border-radius: 50%; border: 3px solid #f8f9fa;" %>
                 <% else %>
                   <%= image_tag 'no_image.jpg', size: "35x35", style: "object-fit: cover; border-radius: 50%; border: 3px solid #f8f9fa" %>
                 <% end %>
               </span>
               <div class="other-message">
-                <%= m.message %>
+                <%= message.message %>
               </div>
             </div>
           <% end %>
