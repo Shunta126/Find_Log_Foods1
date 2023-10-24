@@ -5,6 +5,12 @@
     </div>
 
   <div class="row justify-content-center">
+    <P><i class="fa-solid fa-user-check fa-sm" style="color: #1fe01f;"></i>=会員</p>
+    <p class="icon ml-3"><i class="fa-solid fa-user-xmark fa-sm" style="color: #9c9ea0;"></i>=退会済み</p>
+  </div>
+
+
+  <div class="row justify-content-center">
     <div class="col-9">
       <div class="row justify-content-center">
         <% @customers.each do |customer| %>
@@ -13,7 +19,7 @@
                 <% if customer.is_deleted == false %>
                  <i class="fa-solid fa-user-check fa-sm" style="color: #1fe01f;"></i>
                 <% else %>
-                 <i class="fa-solid fa-user-check fa-sm" style="color: #8b8d8b;"></i>
+                 <i class="fa-solid fa-user-xmark fa-sm" style="color: #9c9ea0;"></i>
                 <% end %>
                 <%= link_to customer_path(customer.id) do%>
                   <div class="content text-center">

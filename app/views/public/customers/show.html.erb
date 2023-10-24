@@ -50,7 +50,7 @@
        <%= form_with model: @room, url:rooms_path, local: true, method: :post do |f| %>
          <%= fields_for @entry do |e| %>
           <%= e.hidden_field :customer_id, value: @customer.id %>
-          <%= f.submit "チャットを始める", class:"button-dm" %>
+          <%= f.submit "チャットを始める", class:"button-new" %>
          <% end %>
         <% end %>
       <% end %>
