@@ -19,9 +19,7 @@
         <% @messages.each do |message| %>
           <% if message.customer_id == current_customer.id %>
             <div class="my-body">
-              <div class="my-text">
-                <span class="my-message"><%= message.message %></span>
-              </div>
+              <span class="my-message"><%= message.message %></span>
             </div>
           <% else %>
             <div class="other-body">
