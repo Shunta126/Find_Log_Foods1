@@ -82,7 +82,9 @@
         </div>
 
         <div class="content text-center mt-3">
-           <%= render "public/comments/form", restaurant: @restaurant, comment: @comment %>
+          <div id="comment-form">
+            <%= render "public/comments/form", restaurant: @restaurant, comment: @comment %>
+          </div>
          </div>
 
       </div>
