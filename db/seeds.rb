@@ -8,5 +8,5 @@
 
 Admin.create!(
    email: 'flf@example.com',
-   password: ENV['SECRET_KEY'] ,
+   password: '111111',
 )
