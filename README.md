@@ -19,7 +19,8 @@
 ・思い出として写真を残したい時。
 
 ## 設計書
-<!--テーマを設定・提出する時点では不要です-->
+・ER図url(https://app.diagrams.net/#G1oYA_Fm12K3T9vL3F1ZZuqM1Wx6OS4ig2)  
+・テーブル定義書url(https://docs.google.com/spreadsheets/d/1VUZhLl1vK6syhBeYRyr3OtzHk9smrSfd/edit#gid=1130581186)
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -29,5 +30,6 @@
 - IDE：Cloud9
 
 ## 使用素材
-・フリー素材として以下を使用
- ⦿pixaboy (https://pixabay.com/ja/photos/)
+・フリー素材として以下を使用  
+・pixaboy (https://pixabay.com/ja/photos/)  
+・デザインAC(https://www.design-ac.net/)
