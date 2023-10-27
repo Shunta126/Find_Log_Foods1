@@ -20,7 +20,8 @@
 
 ## 設計書
 ・ER図url(https://app.diagrams.net/#G1oYA_Fm12K3T9vL3F1ZZuqM1Wx6OS4ig2)  
-・テーブル定義書url(https://docs.google.com/spreadsheets/d/1VUZhLl1vK6syhBeYRyr3OtzHk9smrSfd/edit#gid=1130581186)
+・テーブル定義書url  
+(https://docs.google.com/spreadsheets/d/1VUZhLl1vK6syhBeYRyr3OtzHk9smrSfd/edit#gid=1130581186)
 
 ## 開発環境
 - OS：Linux(CentOS)
