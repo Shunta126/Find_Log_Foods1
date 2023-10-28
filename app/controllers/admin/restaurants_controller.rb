@@ -38,9 +38,10 @@ class Admin::RestaurantsController < ApplicationController
     redirect_to admin_restaurants_path
   end
 
-end
+ private
 
-private
    def restaurant_params
      params.require(:restaurant).permit(:restaurant_name, :genre_id, :food_name, :price, :body, :place, :image)
    end
+
+end

@@ -68,9 +68,10 @@ class Public::CustomersController < ApplicationController
     @customers = customer.follower_customers
   end
 
-end
-
  private
+
    def customer_params
      params.require(:customer).permit(:name, :body, :email, :age, :image)
    end
+
+end
