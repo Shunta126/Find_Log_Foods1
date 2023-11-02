@@ -20,12 +20,18 @@ class Public::RestaurantsController < ApplicationController
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
+    tags = Vision.get_image_data(restaurant_params[:image]) if restaurant_params[:image].present?
     @restaurant.customer_id = current_customer.id
     if @restaurant.customer.email == 'guest@example.com'
       @genres = Genre.all
       flash[:notice] = "会員登録後に投稿できます！"
       render :new
     elsif @restaurant.save
+      if tags.present?
+        tags.each do |tag|
+          @restaurant.tags.create(name: tag)
+        end
+      end
       flash[:notice] = "投稿しました！"
       redirect_to restaurants_path
     else

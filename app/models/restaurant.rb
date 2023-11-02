@@ -1,6 +1,7 @@
 class Restaurant < ApplicationRecord
   has_one_attached :image
   has_many :likes, dependent: :destroy
+  has_many :tags, dependent: :destroy
   has_many :comments
   belongs_to :customer
   belongs_to :genre

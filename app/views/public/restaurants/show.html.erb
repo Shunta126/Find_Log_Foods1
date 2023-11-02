@@ -30,6 +30,12 @@
             <% end %>
           </div>
 
+          <div class="content">
+            <% @restaurant.tags.each do |tag| %>
+              <span class="label"><%= tag.name %></span>
+            <% end %>
+          </div>
+
           <div class="content mt-2">
             <h5><strong class="title">店舗名</strong>  <%= @restaurant.restaurant_name %></h5>
           </div>
