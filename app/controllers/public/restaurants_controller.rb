@@ -52,10 +52,12 @@ class Public::RestaurantsController < ApplicationController
 
   def update
     @restaurant = Restaurant.find(params[:id])
-    if @restaurant.update(restaurant_params)
+    if @restaurant.customer.id == current_customer.id
+      @restaurant.update(restaurant_params)
       flash[:notice] = "変更しました！"
       redirect_to restaurant_path(@restaurant)
     else
+      flash[:notice] = "自分の投稿のみ変更可能です！"
       @genres = Genre.all
       render :edit
     end

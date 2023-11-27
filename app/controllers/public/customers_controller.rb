@@ -38,10 +38,13 @@ class Public::CustomersController < ApplicationController
       flash[:notice] = "会員登録後に変更できます！"
       @restaurants = @customer.restaurants
       render :show
-    elsif @customer.update(customer_params)
+    elsif
+      @customer.id == current_customer.id
+      @customer.update(customer_params)
       flash[:notice] = "変更が完了しました！"
       redirect_to customer_path(@customer)
     else
+      flash[:notice] = "マイページのみ変更可能です！"
       render :edit
     end
   end
