@@ -2,57 +2,7 @@
   <div class="row justify-content-center">
     <h3><strong>フォローユーザー</strong></h3>
   </div>
-
-  <div class="row justify-content-center">
-    <P><i class="fa-solid fa-user-check fa-sm" style="color: #1fe01f;"></i>=会員</p>
-    <p class="icon ml-3"><i class="fa-solid fa-user-xmark fa-sm" style="color: #9c9ea0;"></i>=退会済み</p>
-  </div>
-
-  <div class="row justify-content-center">
-    <div class="col-9">
-      <div class="row justify-content-center">
-        <% @customers.each do |customer| %>
-            <div class="col-3 mb-5">
-              <div class="p-3 box-shadow">
-                <% if customer.is_deleted == false %>
-                 <i class="fa-solid fa-user-check fa-sm" style="color: #1fe01f;"></i>
-                <% else %>
-                 <i class="fa-solid fa-user-xmark fa-sm" style="color: #9c9ea0;"></i>
-                <% end %>
-
-                <%= link_to customer_path(customer.id) do%>
-                  <div class="content text-center">
-                    <div class="img-container">
-                      <% if customer.image.attached? %>
-                        <%= image_tag customer.image, size: "150x150", style: "object-fit: cover; border-radius: 50%; border: 3px solid #99CCCC;" %>
-                      <% else %>
-                        <%= image_tag 'no_image.jpg', size: "150x150", style: "object-fit: cover; border-radius: 50%; border: 3px solid #99CCCC;" %>
-                      <% end %>
-                    </div>
-                  </div>
-                <% end %>
-                <div class="content text-center">
-                  <P><strong>年齢</strong><br><%= customer.age %><br>
-                  <strong>名前</strong><br><%= link_to customer_path(customer.id) do%>
-                  <%= customer.name %>
-                   <% end %>
-                  </P>
-                </div>
-                <div class="content text-center">
-                  <% if current_customer != customer %>
-                    <% if current_customer.following?(customer) %>
-                      <%= link_to "フォロー外す", customer_relationships_path(customer.id), method: :delete, class: "button-unfollow" %>
-                    <% else %>
-                      <%= link_to "フォローする", customer_relationships_path(customer.id), method: :post, class:"button-follow" %>
-                    <% end %>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
+ <%= render "public/customers/index", customers: @customers %>
 </div>
 
 <a href="#top" class="scroll-top-btn">
