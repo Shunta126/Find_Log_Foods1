@@ -52,4 +52,8 @@ class Customer < ApplicationRecord
     following_customers.include?(customer)
   end
 
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
+
 end
