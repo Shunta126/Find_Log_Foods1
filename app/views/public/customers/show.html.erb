@@ -110,46 +110,7 @@
     <div class="row justify-content-center mt-4">
     <h3><strong>投稿一覧(<%= @restaurants.count %>件)</strong></h3>
   </div>
-
-  <div class="row justify-content-center mt-3">
-    <div class="col-9">
-      <div class="row">
-        <% @restaurants.each do |restaurant| %>
-            <div class="col-4 mb-5">
-              <div class="p-3 box-shadow">
-                <div class="content text-center">
-                  <%= link_to restaurant_path(restaurant.id) do%>
-                    <% if restaurant.image.attached? %>
-                      <%= image_tag restaurant.image, size: "215x150", style: "object-fit: cover; border: 3px solid #FFC7AF;" %>
-                    <% else %>
-                      <%= image_tag 'restaaurant_no_img.jpeg', size: "215x150", style: "object-fit: cover; border: 3px solid #FFC7AF;" %>
-                    <% end %>
-                  <% end %>
-                </div>
-                <div class="content text-center">
-                  <P><strong>店舗名</strong><br>
-                  <%= link_to restaurant_path(restaurant.id) do%>
-                  <%= restaurant.restaurant_name %>
-                  <% end %><br>
-                  <strong>料金</strong>   <%= restaurant.price.to_s(:delimited) %>円<br>
-                  <strong>所在地</strong><br>
-                  <%= restaurant.place %></p>
-                </div>
-                <div class="row justify-content-center">
-                  <table>
-                    <th>
-                        <td id="like_buttons_<%= restaurant.id %>" >
-                       <%= render "public/likes/like", restaurant: restaurant %></td>
-                       <td>:コメント<%= restaurant.comments.count %>件</td>
-                     </th>
-                  </table>
-                </div>
-              </div>
-            </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
+  <%= render "public/restaurants/index", restaurants: @restaurants %>
 </div>
 
 <a href="#top" class="scroll-top-btn">

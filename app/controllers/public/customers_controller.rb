@@ -7,7 +7,7 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
-    @restaurants = @customer.restaurants.order(created_at: :desc)
+    @restaurants = @customer.restaurants.order(created_at: :desc).page(params[:page]).per(24)
     @following_customers = @customer.following_customers
     @follower_customers = @customer.follower_customers
     @current_entry = Entry.where(customer_id: current_customer.id)
