@@ -3,113 +3,21 @@
     <div class="row justify-content-center">
       <h3><strong>会員検索結果一覧</strong></h3>
     </div>
-
-    <div class="row justify-content-center">
-    <div class="col-9">
-      <div class="row justify-content-center">
-        <% @customers.each do |customer| %>
-            <div class="col-3 mb-5">
-              <div class="p-3 box-shadow">
-                <% if customer.is_deleted == false %>
-                 <i class="fa-solid fa-user-check fa-sm" style="color: #1fe01f;"></i>
-                <% else %>
-                 <i class="fa-solid fa-user-xmark fa-sm" style="color: #9c9ea0;"></i>
-                <% end %>
-                <%= link_to admin_customer_path(customer.id) do%>
-                  <div class="content text-center">
-                    <% if customer.image.attached? %>
-                      <%= image_tag customer.image, size: "150x150", style: "object-fit: cover; border-radius: 50%; border: 3px solid #99CCCC;" %>
-                    <% else %>
-                      <%= image_tag 'no_image.jpg', size: "150x150", style: "object-fit: cover; border-radius: 50%; border: 3px solid #99CCCC;" %>
-                    <% end %>
-                  </div>
-                <% end %>
-                <div class="content text-center">
-                  <P><strong>年齢</strong><br><%= customer.age %><br>
-                  <strong>名前</strong><br><%= link_to admin_customer_path(customer.id) do%>
-                  <%= customer.name %>
-                   <% end %>
-                  </P>
-                </div>
-              </div>
-            </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
+     <%= render "admin/customers/index", customers: @customers %>
 
     <% elsif @range == "店舗名" %>
     <div class="row justify-content-center">
       <h3><strong>店舗名検索結果一覧</strong></h3>
     </div>
-
-    <div class="row justify-content-center">
-    <div class="col-9">
-      <div class="row">
-        <% @restaurants.each do |restaurant| %>
-            <div class="col-4 mb-5">
-              <div class="p-3 box-shadow">
-                <div class="content text-center">
-                  <%= link_to admin_restaurant_path(restaurant.id) do%>
-                    <% if restaurant.image.attached? %>
-                      <%= image_tag restaurant.image, size: "215x150", style: "object-fit: cover; border: 3px solid #FFC7AF;" %>
-                    <% else %>
-                      <%= image_tag 'restaaurant_no_img.jpeg', size: "215x150", style: "object-fit: cover; border: 3px solid #FFC7AF;" %>
-                    <% end %>
-                  <% end %>
-                </div>
-                <div class="content text-center">
-                  <P><strong>店舗名</strong><br>
-                  <%= link_to admin_restaurant_path(restaurant.id) do%>
-                  <%= restaurant.restaurant_name %>
-                  <% end %><br>
-                  <strong>料金</strong><br>
-                  <%= restaurant.price.to_s(:delimited) %>円<br>
-                  <strong>所在地</strong><br>
-                  <%= restaurant.place %></p>
-                </div>
-              </div>
-            </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
+     <%= render "admin/restaurants/index", restaurants: @restaurants %>
 
     <% elsif @range == "所在地" %>
     <div class="row justify-content-center">
       <h3><strong>店舗所在地検索結果一覧</strong></h3>
     </div>
-
-    <div class="row justify-content-center">
-    <div class="col-9">
-      <div class="row">
-        <% @restaurants.each do |restaurant| %>
-            <div class="col-4 mb-5">
-              <div class="p-3 box-shadow">
-                <div class="content text-center">
-                  <%= link_to admin_restaurant_path(restaurant.id) do%>
-                    <% if restaurant.image.attached? %>
-                      <%= image_tag restaurant.image, size: "215x150", style: "object-fit: cover; border: 3px solid #FFC7AF;" %>
-                    <% else %>
-                      <%= image_tag 'restaaurant_no_img.jpeg', size: "215x150", style: "object-fit: cover; border: 3px solid #FFC7AF;" %>
-                    <% end %>
-                  <% end %>
-                </div>
-                <div class="content text-center">
-                  <P><strong>店舗名</strong><br>
-                  <%= link_to admin_restaurant_path(restaurant.id) do%>
-                  <%= restaurant.restaurant_name %>
-                  <% end %><br>
-                  <strong>料金</strong><br>
-                  <%= restaurant.price.to_s(:delimited) %>円<br>
-                  <strong>所在地</strong><br>
-                  <%= restaurant.place %></p>
-                </div>
-              </div>
-            </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
+　　　<%= render "admin/restaurants/index", restaurants: @restaurants %>
   <% end %>
 </div>
+<a href="#top" class="scroll-top-btn">
+  <i class="fa-solid fa-circle-chevron-up fa-xl" style="color: #ec7322;"></i>
+</a>
