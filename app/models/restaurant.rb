@@ -3,6 +3,7 @@ class Restaurant < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :tags, dependent: :destroy
   has_many :comments
+  has_many :week_likes, -> { where(created_at: 1.week.ago.beginning_of_day..Time.current.end_of_day) }
   belongs_to :customer
   belongs_to :genre
 
