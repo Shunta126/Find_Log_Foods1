@@ -14,6 +14,7 @@ scope module: :public do
   get 'customers/:id/confirm', to: 'customers#confirm', as: 'confirm_customer'
   patch 'customers/:id/withdrawal', to: 'customers#withdrawal', as: 'withdrawal_customer'
   get "search" => "searches#search"
+  get "timeline", to: "restaurants#timeline"
   resources :customers do
   resource :relationships, only: [:create, :destroy]
   end
@@ -33,7 +34,6 @@ devise_scope :customer do
   resources :customer do
     get 'customers/:id/follows', to: 'public/customers#follows', as: 'follows_customer'
     get 'customers/:id/followers', to: 'public/customers#followers', as: 'followers_customer'
-
   end
 
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {

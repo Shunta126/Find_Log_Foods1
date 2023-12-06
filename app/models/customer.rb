@@ -41,7 +41,7 @@ class Customer < ApplicationRecord
   end
 
   def follow(customer_id)
-  followers.create(followed_id: customer_id)
+    followers.create(followed_id: customer_id)
   end
 
   def unfollow(customer_id)

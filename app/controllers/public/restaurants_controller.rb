@@ -9,7 +9,12 @@ class Public::RestaurantsController < ApplicationController
     else
       @restaurants = Restaurant.all.order(created_at: :desc).page(params[:page]).per(24)
     end
+  end
 
+  def timeline
+    customer = Customer.find(current_customer.id)
+    customers = customer.following_customers
+    @restaurants = customers.restaurants.order(create_at: :desc).page(params[:page]).per(24)
   end
 
   def new
