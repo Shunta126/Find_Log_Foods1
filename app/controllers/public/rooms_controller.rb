@@ -16,4 +16,13 @@ class Public::RoomsController < ApplicationController
     @another_entry = @entries.where.not(customer_id: current_customer.id).first
   end
 
+  def index
+   current_entries = current_customer.entries
+   my_room_id = []
+   current_entries.each do |entry|
+    my_room_id << entry.room.id
+   end
+   @another_entries = Entry.where(room_id: my_room_id).where.not(customer_id: current_customer.id)
+  end
+
 end

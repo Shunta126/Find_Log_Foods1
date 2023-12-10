@@ -1,0 +1,35 @@
+<div class="container-field mt-3 mb-3">
+  <div class="row justify-content-center mt-3">
+   <h3>メッセージ一覧</h3>
+  </div>
+
+　<div class="row justify-content-center">
+    <div class="col-9">
+      <div class="row justify-content-center">
+  　      <% @another_entries.each do |entry| %>
+  　       <div class="col-3 mb-5">
+             <%= link_to room_path(entry.room), class: "link" do %>
+               <div class="p-3 box-shadow">
+                 <table>
+                   <tr>
+                     <td>
+                      <% if entry.customer.image.attached? %>
+                        <%= image_tag entry.customer.image, size: "80x80", style: "object-fit: cover; border-radius: 50%; border: 3px solid #99CCCC;" %>
+                      <% else %>
+                        <%= image_tag 'no_image.jpg', size: "80x80", style: "object-fit: cover; border-radius: 50%; border: 3px solid #99CCCC;" %>
+                      <% end %>
+                    </td>
+                    <td>
+                      <%= entry.customer.name %><br>
+                      <%= Message.find_by(id: entry.room.message_ids.last)&.message %>
+                    </td>
+                   </tr>
+                  </table>
+                </div>
+              <% end %>
+          </div>
+      　  <% end %>
+    　 </div>
+　   </div>
+　</div>
+</div>
